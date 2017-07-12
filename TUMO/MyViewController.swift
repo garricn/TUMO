@@ -8,13 +8,13 @@
 
 import UIKit
 
-class MyViewController: UITableViewController, UISearchBarDelegate {
+class MyViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
 
-    let names = ["Garen", "Garric", "Hayk", "Ani", "Lilit"]
+    var names = ["Garen", "Garric", "Hayk", "Ani", "Lilit"]
 
     var items: [String] = []
 
-    let searchController = UISearchController.init(searchResultsController: nil)
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,34 +28,30 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
 
         navigationItem.rightBarButtonItem = myBarButtonItem
 
-        items = names.sorted()
+        names.sort()
 
+        items = names
 
-        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
         tableView.tableHeaderView = searchController.searchBar
     }
 
     func didTapAddButton(sender: UIBarButtonItem) {
-        let newString = "Item \(items.count)"
-        items.append(newString)
-        let indexPath = IndexPath(row: items.count - 1, section: 0)
+        let newString = "Item \(names.count)"
+        names.append(newString)
+        let indexPath = IndexPath(row: names.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
-//        tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-
         cell.textLabel?.text = items[indexPath.row].uppercased()
-
         return cell
     }
 
@@ -69,23 +65,15 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
         navigationController?.pushViewController(viewController, animated: true)
     }
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        items = names.filter { $0.contains(searchBar.text!) }
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+
+        if searchText.isEmpty {
+            items = names
+        } else {
+            items = names.filter { $0.lowercased().contains(searchText.lowercased()) }
+        }
+
         tableView.reloadData()
-        searchController.dismiss(animated: true, completion: nil)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
