@@ -46,7 +46,7 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
         searchController.searchBar.delegate = self
         tableView.tableHeaderView = searchController.searchBar
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
+        tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "myCell")
 
         let myBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonSystemItem.add,
@@ -85,9 +85,15 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row]
-        return cell
+
+        let myCell = cell as! MyTableViewCell
+
+        myCell.myImageView.image = UIImage(named: "myImage")
+
+        return myCell
+
     }
 
     // MARK: - Table view delegate
@@ -99,7 +105,55 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
         viewController.title = items[indexPath.row]
         navigationController?.pushViewController(viewController, animated: true)
     }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+        let image = UIImage(named: "myImage")!
+        let ratio = image.size.height / image.size.width
+        return UIScreen.main.bounds.width * ratio
+
+    }
 }
+
+
+class MyTableViewCell: UITableViewCell {
+
+    let myImageView = UIImageView()
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+        contentView.addSubview(myImageView)
+
+        myImageView.contentMode = .scaleAspectFit
+        myImageView.translatesAutoresizingMaskIntoConstraints = false
+
+        myImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        myImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        myImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        myImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
