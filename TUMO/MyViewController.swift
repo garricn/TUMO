@@ -8,12 +8,29 @@
 
 import UIKit
 
-class MyViewController: UITableViewController {
+class MyViewController: UITableViewController, UISearchBarDelegate {
+
+    let searchController = UISearchController(searchResultsController: nil)
 
     var names = ["Garen", "Garric", "Hayk", "Ani", "Lilit"]
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchBar.text {
+            names = names.filter({ name in
+                return name.lowercased().contains(searchText.lowercased())
+            })
+        }
+    }
+
+    func filterFunction(string: String) -> Bool {
+
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        searchController.searchBar.delegate = self
+        tableView.tableHeaderView = searchController.searchBar
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
 
