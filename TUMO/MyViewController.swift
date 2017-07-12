@@ -16,16 +16,23 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
-            names = names.filter({ name in
-                return name.lowercased().contains(searchText.lowercased())
-            })
+//            names = names.filter { name in
+//                return name.lowercased().contains(searchText.lowercased())
+//            }
+
+            var filterdNames: [String] = []
+
+            for name in names {
+                if name.lowercased().contains(searchText.lowercased()) {
+                    filterdNames.append(name)
+                }
+            }
+
+            names = filterdNames
+
+            tableView.reloadData()
         }
     }
-
-    func filterFunction(string: String) -> Bool {
-
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
