@@ -17,7 +17,7 @@ class MyTableViewCell: UITableViewCell {
 
         contentView.addSubview(myImageView)
 
-        myImageView.contentMode = .scaleAspectFit
+        myImageView.contentMode = .scaleAspectFill
         myImageView.translatesAutoresizingMaskIntoConstraints = false
 
         myImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true

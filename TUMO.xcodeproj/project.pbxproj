@@ -12,6 +12,7 @@
 		60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60521B691F14F095002315B7 /* LaunchScreen.storyboard */; };
 		60521B731F14F3F4002315B7 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60521B721F14F3F4002315B7 /* MyViewController.swift */; };
 		60521B751F165E1B002315B7 /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60521B741F165E1B002315B7 /* MyTableViewCell.swift */; };
+		60C8B26A1F17A48D00F8015B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8B2691F17A48D00F8015B /* Photo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		60521B6C1F14F095002315B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60521B721F14F3F4002315B7 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		60521B741F165E1B002315B7 /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
+		60C8B2691F17A48D00F8015B /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				60521B601F14F095002315B7 /* AppDelegate.swift */,
 				60521B721F14F3F4002315B7 /* MyViewController.swift */,
+				60C8B2691F17A48D00F8015B /* Photo.swift */,
 				60521B741F165E1B002315B7 /* MyTableViewCell.swift */,
 				60521B671F14F095002315B7 /* Assets.xcassets */,
 				60521B691F14F095002315B7 /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C8B26A1F17A48D00F8015B /* Photo.swift in Sources */,
 				60521B731F14F3F4002315B7 /* MyViewController.swift in Sources */,
 				60521B611F14F095002315B7 /* AppDelegate.swift in Sources */,
 				60521B751F165E1B002315B7 /* MyTableViewCell.swift in Sources */,
