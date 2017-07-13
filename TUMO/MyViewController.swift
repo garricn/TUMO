@@ -8,74 +8,60 @@
 
 import UIKit
 
-class MyViewController: UITableViewController, UISearchBarDelegate {
+class MyViewController: UITableViewController {
 
-    let searchController = UISearchController(searchResultsController: nil)
-
-    let names = ["Garen", "Garric", "Hayk", "Ani", "Lilit"]
-
-    var items: [String] = []
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let searchText = searchBar.text {
-            items = items.filter {
-                $0.lowercased().contains(searchText.lowercased())
-            }
-
-            tableView.reloadData()
-            searchController.dismiss(animated: true, completion: nil)
-        }
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        reset()
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            reset()
-            searchController.dismiss(animated: true, completion: nil)
-        }
-    }
+    var items: [Photo] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        items = names.sorted()
-
-        searchController.searchBar.delegate = self
-        tableView.tableHeaderView = searchController.searchBar
-
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "myCell")
 
-        let myBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: UIBarButtonSystemItem.add,
-            target: self,
-            action: #selector(didTapAddButton))
-
-        navigationItem.rightBarButtonItem = myBarButtonItem
-
-        let resetButton = UIBarButtonItem(
-            barButtonSystemItem: .refresh,
-            target: self,
-            action: #selector(didTapResetButton))
-
-        navigationItem.leftBarButtonItem = resetButton
+        refresh()
     }
 
-    func reset() {
-        items = names.sorted()
-        tableView.reloadData()
-    }
+    typealias JSON = [String: Any]
 
-    func didTapResetButton(sender: UIBarButtonItem) {
-        reset()
-    }
+    func refresh() {
+        let apiKey = "3ac66971a7d99a38e522d76759fca2e1"
+        let baseURLString = "https://api.flickr.com/services/rest/"
+        let method = "flickr.galleries.getPhotos"
+        let galleryID = "72157664540660544"
+        let queryString = "?method=\(method)&api_key=\(apiKey)&gallery_id=\(galleryID)&format=json&nojsoncallback=1"
+        let urlString = baseURLString.appending(queryString)
+        let encoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = URL(string: encoded)!
 
-    func didTapAddButton(sender: UIBarButtonItem) {
-        let newString = "Item \(names.count)"
-        items.append(newString)
-        tableView.reloadData()
+        URLSession.shared.dataTask(with: url) { data, response, error in
+
+            guard let data = data else {
+
+                if let response = response {
+                    print(response)
+                }
+
+                if let error = error {
+                    print(error)
+                }
+                return
+            }
+
+            do {
+                let any = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                let json = any as? JSON ?? [:]
+                let dict = json["photos"] as? JSON ?? [:]
+                let photos = dict["photo"] as? [JSON] ?? []
+
+                self.items = photos.flatMap(Photo.init)
+
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+
+            } catch {
+                print(error)
+            }
+        }.resume()
     }
 
     // MARK: - Table view data source
@@ -85,15 +71,10 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-
         let myCell = cell as! MyTableViewCell
-
-        myCell.myImageView.image = UIImage(named: "myImage")
-
+        myCell.myImageView.image = items[indexPath.row].image
         return myCell
-
     }
 
     // MARK: - Table view delegate
@@ -102,46 +83,38 @@ class MyViewController: UITableViewController, UISearchBarDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let viewController = UIViewController()
         viewController.view.backgroundColor = .white
-        viewController.title = items[indexPath.row]
+//        viewController.title = items[indexPath.row]
         navigationController?.pushViewController(viewController, animated: true)
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-
-        let image = UIImage(named: "myImage")!
-        let ratio = image.size.height / image.size.width
-        return UIScreen.main.bounds.width * ratio
-
+        return UIScreen.main.bounds.width
     }
 }
 
+struct Photo {
+    let farmID: Int
+    let serverID: String
+    let photoID: String
+    let secret: String
+    let image: UIImage
 
+    init?(json: [String: Any]){
+        self.farmID = json["farm"] as? Int ?? -1
+        self.serverID = json["server"] as? String ?? ""
+        self.photoID = json["id"] as? String ?? ""
+        self.secret = json["secret"] as? String ?? ""
 
+        let baseURLString = "https://farm\(farmID).staticflickr.com/"
+        let resourceString = baseURLString.appending("\(serverID)/\(photoID)_\(secret)_z.jpg")
 
+        guard
+            let encoded = resourceString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let url = URL(string: encoded),
+            let data = try? Data(contentsOf: url),
+            let image = UIImage(data: data)
+            else { return nil }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        self.image = image
+    }
+}
