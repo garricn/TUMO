@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol AuthenticationDelegate: class {
+    func didFinishAuthenticating(in viewController: UIViewController)
+}
+
 class AuthenticationViewController: UIViewController, UITextFieldDelegate {
+
+    weak var delegate: AuthenticationDelegate?
 
     let authenticationView = AuthenticationView()
 
@@ -33,6 +39,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         // validation
         // authenticate
         // success or failure
+        delegate?.didFinishAuthenticating(in: self)
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

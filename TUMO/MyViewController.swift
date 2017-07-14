@@ -8,7 +8,27 @@
 
 import UIKit
 
-class MyViewController: UITableViewController {
+class MyViewController: UITableViewController, AuthenticationDelegate {
+
+    var isLoggedIn = false
+
+    func didFinishAuthenticating(in viewController: UIViewController) {
+        self.isLoggedIn = true
+        viewController.dismiss(animated: true)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // check if the user is logged in
+        // if they are logged in, do nothing
+        // if they are not logged in, present login screen
+        if !isLoggedIn {
+            let viewController = AuthenticationViewController()
+            viewController.delegate = self
+            present(viewController, animated: true, completion: nil)
+        }
+    }
 
     var items: [Photo] = []
 
