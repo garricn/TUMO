@@ -26,10 +26,19 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         authenticationView.usernameTextField.delegate = self
         authenticationView.passwordTextField.delegate = self
         authenticationView.actionButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+        authenticationView.actionButton.isEnabled = false
     }
 
     func didTapLoginButton(sender: UIButton) {
+        // validation
+        // authenticate
+        // success or failure
+    }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        authenticationView.actionButton.isEnabled = !authenticationView.passwordTextField.text!.isEmpty
+            && !authenticationView.usernameTextField.text!.isEmpty
+        return true
     }
 
     func configureKeyboardObservers() {
