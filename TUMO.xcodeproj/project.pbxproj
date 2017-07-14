@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		602BBAAA1F18DA9E00030791 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BBAA91F18DA9E00030791 /* AuthenticationView.swift */; };
+		602BBAAC1F18E13000030791 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */; };
 		60521B611F14F095002315B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60521B601F14F095002315B7 /* AppDelegate.swift */; };
 		60521B681F14F095002315B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60521B671F14F095002315B7 /* Assets.xcassets */; };
 		60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60521B691F14F095002315B7 /* LaunchScreen.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		602BBAA91F18DA9E00030791 /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		60521B5D1F14F095002315B7 /* TUMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60521B601F14F095002315B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		60521B671F14F095002315B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				60521B601F14F095002315B7 /* AppDelegate.swift */,
 				602BBAA91F18DA9E00030791 /* AuthenticationView.swift */,
+				602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */,
 				60521B721F14F3F4002315B7 /* MyViewController.swift */,
 				60C8B2691F17A48D00F8015B /* Photo.swift */,
 				60521B741F165E1B002315B7 /* MyTableViewCell.swift */,
@@ -146,6 +149,7 @@
 				60521B731F14F3F4002315B7 /* MyViewController.swift in Sources */,
 				60521B611F14F095002315B7 /* AppDelegate.swift in Sources */,
 				60521B751F165E1B002315B7 /* MyTableViewCell.swift in Sources */,
+				602BBAAC1F18E13000030791 /* AuthenticationViewController.swift in Sources */,
 				602BBAAA1F18DA9E00030791 /* AuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
