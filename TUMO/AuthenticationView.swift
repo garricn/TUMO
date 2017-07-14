@@ -15,6 +15,8 @@ class AuthenticationView: UIView {
     let passwordTextField = UITextField()
     let actionButton = UIButton()
 
+    var centerYConstraint: NSLayoutConstraint?
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -62,7 +64,9 @@ class AuthenticationView: UIView {
 
         // MARK: - Constraining Y Axis
 
-        passwordTextField.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        centerYConstraint = passwordTextField.centerYAnchor.constraint(equalTo: centerYAnchor)
+        centerYConstraint?.isActive = true
+
         infoLabel.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10).isActive = true
         usernameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10).isActive = true
         actionButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
