@@ -20,14 +20,22 @@ class AuthenticationViewController: UIViewController {
         super.viewDidLoad()
 
         let center = NotificationCenter.default
-        center.addObserver(forName: .UIKeyboardDidShow, object: nil, queue: nil) { notification in
+        center.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil) { notification in
+
             self.authenticationView.centerYConstraint?.constant = -50
-            print(notification)
+
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
         }
 
-        center.addObserver(forName: .UIKeyboardDidHide, object: nil, queue: nil) { notification in
+        center.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil) { notification in
+
             self.authenticationView.centerYConstraint?.constant = 0
-            print(notification)
+
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
         }
     }
 }
