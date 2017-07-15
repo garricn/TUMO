@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AuthenticationDelegate: class {
-    func didFinishAuthenticating(in viewController: UIViewController)
+    func didFinishAuthenticating(user: User, in viewController: UIViewController)
 }
 
 class AuthenticationViewController: UIViewController, UITextFieldDelegate {
@@ -36,10 +36,8 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     }
 
     func didTapLoginButton(sender: UIButton) {
-        // validation
-        // authenticate
-        // success or failure
-        delegate?.didFinishAuthenticating(in: self)
+        let user = User(id: "", name: "")
+        delegate?.didFinishAuthenticating(user: user, in: self)
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

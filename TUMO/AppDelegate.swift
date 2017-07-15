@@ -16,9 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow()
-        let viewController = MyViewController()
-//        viewController.title = "Login"
-        window?.rootViewController = UINavigationController(rootViewController: viewController)
+
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .white
+        let navigationController = NavigationController(rootViewController: viewController)
+        navigationController.user = User.unarchived
+
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true
     }
