@@ -9,11 +9,15 @@
 import UIKit
 
 class Workshop: NSObject, NSCoding {
-    let farmID: Int
-    let serverID: String
-    let photoID: String
-    let secret: String
+    let name: String
+    let startDate: String
+    let endDate: String
+    let leader: String
+    let focusArea: FocusArea
+    let skill: Skill
     let image: UIImage
+    let shortDescription: String
+    let longDescription: String
 
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("workshops")
@@ -23,52 +27,88 @@ class Workshop: NSObject, NSCoding {
         return NSKeyedUnarchiver.unarchiveObject(withFile: file) as? [Workshop]
     }
 
-    init(farmID: Int, serverID: String, photoID: String, secret: String, image: UIImage) {
-        self.farmID = farmID
-        self.serverID = serverID
-        self.photoID = photoID
-        self.secret = secret
+    init(name: String,
+         startDate: String,
+         endDate: String,
+         leader: String,
+         focusArea: FocusArea,
+         skill: Skill, image: UIImage, shortDescription: String, longDescription: String) {
+
+        self.name = name
+        self.startDate = startDate
+        self.endDate = endDate
+        self.leader = leader
+        self.focusArea = focusArea
+        self.skill = skill
         self.image = image
+        self.shortDescription = shortDescription
+        self.longDescription = longDescription
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
-        guard let serverID = aDecoder.decodeObject(forKey: "serverID") as? String,
-        let photoID = aDecoder.decodeObject(forKey: "photoID") as? String,
-        let secret = aDecoder.decodeObject(forKey: "secret") as? String,
-            let image = aDecoder.decodeObject(forKey: "image") as? UIImage else {
+        let focusAreaRawValue = aDecoder.decodeInteger(forKey: .focusArea)
+        let skillRawValue = aDecoder.decodeInteger(forKey: .skill)
+
+        guard let name = aDecoder.decodeObject(forKey: .name) as? String,
+            let startDate = aDecoder.decodeObject(forKey: .startDate) as? String,
+            let endDate = aDecoder.decodeObject(forKey: .endDate) as? String,
+            let leader = aDecoder.decodeObject(forKey: .leader) as? String,
+            let focusArea = FocusArea(rawValue: focusAreaRawValue),
+            let skill = Skill(rawValue: skillRawValue),
+            let image = aDecoder.decodeObject(forKey: .image) as? UIImage,
+            let short = aDecoder.decodeObject(forKey: .short) as? String,
+            let long = aDecoder.decodeObject(forKey: .long) as? String else {
                 return nil
         }
 
-        let farmID = aDecoder.decodeInteger(forKey: "farmID")
-
-        self.init(farmID: farmID, serverID: serverID, photoID: photoID, secret: secret, image: image)
+        self.init(name: name,
+                  startDate: startDate,
+                  endDate: endDate,
+                  leader: leader,
+                  focusArea: focusArea,
+                  skill: skill,
+                  image: image,
+                  shortDescription: short,
+                  longDescription: long)
     }
 
-    init?(json: [String: Any]){
-        self.farmID = json["farm"] as? Int ?? -1
-        self.serverID = json["server"] as? String ?? ""
-        self.photoID = json["id"] as? String ?? ""
-        self.secret = json["secret"] as? String ?? ""
+    convenience init?(dictionary: Workshop.JSON) {
+        guard let name = dictionary[.name] as? String,
+            let startDate = dictionary[.startDate] as? String,
+            let endDate = dictionary[.endDate] as? String,
+            let leader = dictionary[.leader] as? String,
+            let imageName = dictionary[.imageName] as? String,
+            let image = UIImage.init(named: imageName),
+            let short = dictionary[.short] as? String,
+            let long = dictionary[.long] as? String,
+            let focusAreaRawValue = dictionary[.focusArea] as? Int,
+            let skillRawValue = dictionary[.skill] as? Int,
+            let focusArea = FocusArea(rawValue: focusAreaRawValue),
+            let skill = Skill(rawValue: skillRawValue) else {
+                return nil
+        }
 
-        let baseURLString = "https://farm\(farmID).staticflickr.com/"
-        let resourceString = baseURLString.appending("\(serverID)/\(photoID)_\(secret)_z.jpg")
-
-        guard
-            let encoded = resourceString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-            let url = URL(string: encoded),
-            let data = try? Data(contentsOf: url),
-            let image = UIImage(data: data)
-            else { return nil }
-
-        self.image = image
+        self.init(name: name,
+                  startDate: startDate,
+                  endDate: endDate,
+                  leader: leader,
+                  focusArea: focusArea,
+                  skill: skill,
+                  image: image,
+                  shortDescription: short,
+                  longDescription: long)
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(farmID, forKey: "farmID")
-        aCoder.encode(serverID, forKey: "serverID")
-        aCoder.encode(photoID, forKey: "photoID")
-        aCoder.encode(secret, forKey: "secret")
-        aCoder.encode(image, forKey: "image")
+        aCoder.encode(name, forKey: .name)
+        aCoder.encode(startDate, forKey: .startDate)
+        aCoder.encode(endDate, forKey: .endDate)
+        aCoder.encode(leader, forKey: .leader)
+        aCoder.encode(focusArea.rawValue, forKey: .focusArea)
+        aCoder.encode(skill.rawValue, forKey: .skill)
+        aCoder.encode(image, forKey: .image)
+        aCoder.encode(shortDescription, forKey: .short)
+        aCoder.encode(longDescription, forKey: .long)
     }
 
     @discardableResult static func archive(_ workshops: [Workshop]) -> Bool {
@@ -129,19 +169,38 @@ class Workshop: NSObject, NSCoding {
             
             */
 
-            // NOTE: We're using mockWorkshop.json file to populate our Workshop data
+            // NOTE: - We're using mockWorkshop.json file to populate our Workshop data
+            // TODO: - Delete this once real TUMO API is in place
 
-            guard let path = Bundle.main.path(forResource: "mockWorkshops.json", ofType: nil),
+            guard let path = Bundle.main.path(forResource: "mockWorkshops", ofType: "json"),
                 let dataString = try? String(contentsOfFile: path),
-                let data = dataString.data(using: .utf8),
-                let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-                let dictionaries = json as? [JSON] else {
+                let data = dataString.data(using: .utf8) else {
                     return completion(nil)
             }
 
-            let workshops = dictionaries.flatMap(Workshop.init)
-            completion(workshops)
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                let dictionaries = json as? [JSON]
+                let workshops = dictionaries?.flatMap(Workshop.init)
+                completion(workshops)
+            } catch {
+                print(error)
+            }
         }.resume()
     }
 }
 
+// MARK: - JSON & Coding Keys
+
+private extension String {
+    static let name = "name"
+    static let startDate = "startDate"
+    static let endDate = "endDate"
+    static let leader = "leader"
+    static let focusArea = "focusArea"
+    static let skill = "skill"
+    static let image = "image"
+    static let imageName = "imageName"
+    static let short = "short"
+    static let long = "long"
+}

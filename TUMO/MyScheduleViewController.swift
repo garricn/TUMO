@@ -65,8 +65,8 @@ class MyScheduleViewController: UITableViewController {
         }
 
         init(workshop: Workshop) {
-            self.text = workshop.photoID
-            self.detail = workshop.secret
+            self.text = workshop.name
+            self.detail = workshop.shortDescription
             self.image = workshop.image
         }
     }
