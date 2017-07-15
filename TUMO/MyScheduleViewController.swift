@@ -112,7 +112,7 @@ class MyScheduleViewController: UITableViewController {
     }
 
     private func refresh() {
-        Workshop.fetchAll { workshops in
+        Workshop.fetchAll(for: user) { workshops in
             DispatchQueue.main.async {
                 self.workshops = workshops
             }
