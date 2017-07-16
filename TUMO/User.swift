@@ -71,8 +71,7 @@ class User: NSObject, NSCoding {
     static func authenticate(with credential: Credential, completion: @escaping (User?) -> Void) {
 
         /*
-         The following is another example of making an HTTP Request.
-         Replace it with the real TUMO Authentication API call.
+         The following is a fake HTTP request to mock a network call
          */
 
         guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else {
@@ -82,8 +81,8 @@ class User: NSObject, NSCoding {
         URLSession.shared.dataTask(with: url) { data, response, error in
 
             /*
-             We're using a mockUser.json file to populate our User data.
-             Replace this with the real TUMO API parsing
+             We're using a mock json file to populate our User data.
+             Replace with real TUMO API json parsing
              */
 
             guard let path = Bundle.main.path(forResource: "mockUser", ofType: "json"),
@@ -94,7 +93,7 @@ class User: NSObject, NSCoding {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                let userDict = (json as? [[String: Any]])?.first ?? [:]
+                let userDict = json as? [String: Any] ?? [:]
                 let user = User(dictionary: userDict)
                 completion(user)
             } catch {
@@ -103,52 +102,22 @@ class User: NSObject, NSCoding {
         }.resume()
     }
 
-    typealias JSON = [String: Any]
-
     static func fetchWorkshops(for user: User, completion: @escaping ([Workshop]?) -> Void) {
 
-        // NOTE: We're using the Flikr API as an example of how to make a network request
-        // TODO: Replace the following with TUMO API using User ID when the API becomes available
+        /*
+         The following is a fake HTTP request to mock a network call
+         */
 
-        let apiKey = "3ac66971a7d99a38e522d76759fca2e1"
-        let method = "flickr.galleries.getPhotos"
-        let galleryID = "72157664540660544"
-        let queryString = "?method=\(method)&api_key=\(apiKey)&gallery_id=\(galleryID)&format=json&nojsoncallback=1"
-        let baseURLString = "https://api.flickr.com/services/rest/"
-        let urlString = baseURLString.appending(queryString)
-
-        guard let encoded = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-            let url = URL(string: encoded) else {
-                return
+        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts/1") else {
+            return
         }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
+
             /*
-
-             NOTE:
-
-             This is an example of parsing JSON from a network response
-             This is using the Flikr API
-
-             TODO:
-
-             Replace JSON parsing dictionary keys ("photos", "photo") with TUMO API real keys
-
-             guard let data = data else {
-             return completion(nil)
-             }
-
-             let object = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
-             let json = object as? JSON ?? [:]
-             let dict = json["photos"] as? JSON ?? [:] // Replace "photos" key as appropirate
-             let photos = dict["photo"] as? [JSON] ?? [] // // Replace "photo" key as appropirate
-             let workshops = photos.flatMap(Workshop.init)
-             completion(workshops)
-
+             We're using a mock json file to populate our Workshop data.
+             Replace with real TUMO API json parsing
              */
-
-            // NOTE: - We're using mockWorkshop.json file to populate our Workshop data
-            // TODO: - Delete this once real TUMO API is in place
 
             guard let path = Bundle.main.path(forResource: "mockWorkshops", ofType: "json"),
                 let dataString = try? String(contentsOfFile: path),
@@ -158,13 +127,13 @@ class User: NSObject, NSCoding {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                let dictionaries = json as? [JSON]
+                let dictionaries = json as? [[String: Any]]
                 let workshops = dictionaries?.flatMap(Workshop.init)
                 completion(workshops)
             } catch {
                 print(error)
             }
-            }.resume()
+        }.resume()
     }
 }
 
