@@ -40,9 +40,11 @@ class AuthenticationView: UIView {
 
         passwordTextField.placeholder = "Password"
         passwordTextField.borderStyle = .roundedRect
+        passwordTextField.isSecureTextEntry = true
 
         actionButton.setTitle("LOGIN", for: .normal)
         actionButton.setTitleColor(.blue, for: .normal)
+        actionButton.setTitleColor(.gray, for: .highlighted)
         actionButton.backgroundColor = .white
         actionButton.layer.borderColor = UIColor.blue.cgColor
         actionButton.layer.borderWidth = 2.0

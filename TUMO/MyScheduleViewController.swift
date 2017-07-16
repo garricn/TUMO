@@ -29,14 +29,13 @@ class MyScheduleViewController: UITableViewController {
 
     private var state: State = .loading {
         didSet {
+            items = state.items
             tableView.reloadData()
             refreshControl?.endRefreshing()
         }
     }
 
-    private var items: [Item] {
-        return state.items
-    }
+    private var items: [Item] = []
 
     init(user: User) {
         self.user = user
@@ -81,7 +80,7 @@ class MyScheduleViewController: UITableViewController {
         delegate?.didPullToRefresh(in: self)
     }
 
-    // MARK: - Table view data source
+    // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
@@ -97,6 +96,16 @@ class MyScheduleViewController: UITableViewController {
         return dequeuedCell
     }
 
+    // MARK: - UITableViewDelegate
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = items[indexPath.row]
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .white
+        viewController.title = item.workshop?.name
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
     // MARK: - Nested Types
 
     private enum State {
@@ -107,9 +116,9 @@ class MyScheduleViewController: UITableViewController {
         var items: [Item] {
             switch self {
             case .loading:
-                return [Item.init(text: "Loading...")]
+                return [Item(text: "Loading...")]
             case .empty:
-                return [Item.init(text: "No Workshops Found")]
+                return [Item(text: "No Workshops Found")]
             case .notEmpty(let workshops):
                 return workshops.map(Item.init)
             }
@@ -120,17 +129,21 @@ class MyScheduleViewController: UITableViewController {
         let text: String
         let detail: String
         let image: UIImage?
+        let workshop: Workshop?
 
-        init(text: String, detail: String = "", image: UIImage? = nil) {
+        init(text: String, detail: String = "", image: UIImage? = nil, workshop: Workshop? = nil) {
             self.text = text
             self.detail = detail
             self.image = image
+            self.workshop = workshop
         }
 
         init(workshop: Workshop) {
-            self.text = workshop.name
-            self.detail = workshop.shortDescription
-            self.image = workshop.image
+            self.init(text: workshop.name,
+                      detail: workshop.shortDescription,
+                      image: workshop.image,
+                      workshop: workshop
+            )
         }
     }
 }

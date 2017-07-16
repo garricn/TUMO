@@ -17,7 +17,19 @@ struct Username {
     let rawValue: String
 
     init?(rawValue: String) {
-        // Insert validation code
+        let escapedCharacters = "\\\""
+        let specialCharacters = "!@#$%^&*(){}[]~`'|:;<>,.?/-+=".appending(escapedCharacters)
+
+        for character in specialCharacters.characters {
+            if rawValue.characters.contains(character) {
+                return nil
+            }
+        }
+
+        if rawValue.characters.count < 5 || rawValue.characters.count > 25 {
+            return nil
+        }
+
         self.rawValue = rawValue
     }
 }
@@ -26,7 +38,10 @@ struct Password {
     let rawValue: String
 
     init?(rawValue: String) {
-        // Insert validation code
+        // Insert local validation code
+
+        // Rules
+            // must be greater than 6 characters
         self.rawValue = rawValue
     }
 }

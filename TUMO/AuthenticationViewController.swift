@@ -74,14 +74,22 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
 
     private func login() {
         guard let usernameText = usernameTextField.text,
-            let passwordText = passwordTextField.text,
-            let username = Username.init(rawValue: usernameText),
-            let password = Password.init(rawValue: passwordText) else {
-                print("Could not create username or password!")
+            let passwordText = passwordTextField.text else {
                 return
         }
 
+        guard let username = Username(rawValue: usernameText) else {
+            usernameTextField.text = "Invalid username"
+            return
+        }
+
+        guard let password = Password(rawValue: passwordText) else {
+            passwordTextField.text = "Invalid password"
+            return
+        }
+
         let credential = Credential(username: username, password: password)
+
         User.authenticate(with: credential) { [unowned self] user in
             guard let user = user else {
                 print("Could not authenticate user!")

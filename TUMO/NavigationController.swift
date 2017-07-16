@@ -26,7 +26,7 @@ class NavigationController: UINavigationController, AuthenticationDelegate, MySc
         user = User.unarchived
     }
 
-    func setup() {
+    private func setup() {
         if let user = user {
             let viewController = MyScheduleViewController(user: user)
             viewController.delegate = self
