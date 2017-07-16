@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = UIViewController()
         viewController.view.backgroundColor = .white
         let navigationController = NavigationController(rootViewController: viewController)
-        navigationController.user = User.unarchived
-
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
         return true

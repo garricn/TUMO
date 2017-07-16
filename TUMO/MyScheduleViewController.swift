@@ -9,30 +9,22 @@
 import UIKit
 
 protocol MyScheduleViewControllerDelegate: class {
-    func didTapLogOutButton(in viewController: UIViewController)
+    func didTapLogOutButton(in viewController: MyScheduleViewController)
+    func didPullToRefresh(in viewController: MyScheduleViewController)
 }
 
 class MyScheduleViewController: UITableViewController {
 
     weak var delegate: MyScheduleViewControllerDelegate?
 
-    private(set) var user: User
-
-    private(set) var workshops: [Workshop]? {
+    var user: User {
         didSet {
-            if let workshops = workshops, !workshops.isEmpty {
-                Workshop.archive(workshops)
-                state = .notEmpty(workshops)
-            } else {
+            if self.user.workshops.isEmpty {
                 state = .empty
+            } else {
+                state = .notEmpty(user.workshops)
             }
         }
-    }
-
-    private enum State {
-        case loading
-        case empty
-        case notEmpty([Workshop])
     }
 
     private var state: State = .loading {
@@ -43,37 +35,11 @@ class MyScheduleViewController: UITableViewController {
     }
 
     private var items: [Item] {
-        switch self.state {
-        case .loading:
-            return [Item.init(text: "Loading...")]
-        case .empty:
-            return [Item.init(text: "No Workshops Found")]
-        case .notEmpty(let workshops):
-            return workshops.map(Item.init)
-        }
+        return state.items
     }
 
-    private struct Item {
-        let text: String
-        let detail: String
-        let image: UIImage?
-
-        init(text: String, detail: String = "", image: UIImage? = nil) {
-            self.text = text
-            self.detail = detail
-            self.image = image
-        }
-
-        init(workshop: Workshop) {
-            self.text = workshop.name
-            self.detail = workshop.shortDescription
-            self.image = workshop.image
-        }
-    }
-
-    init(user: User, workshops: [Workshop]?) {
+    init(user: User) {
         self.user = user
-        self.workshops = workshops
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -85,11 +51,11 @@ class MyScheduleViewController: UITableViewController {
         super.viewDidLoad()
         configureView()
 
-        if let workshops = workshops {
-            state = .notEmpty(workshops)
-        } else {
+        if user.workshops.isEmpty {
             state = .loading
             refresh()
+        } else {
+            state = .notEmpty(user.workshops)
         }
     }
 
@@ -112,11 +78,7 @@ class MyScheduleViewController: UITableViewController {
     }
 
     private func refresh() {
-        Workshop.fetchAll(for: user) { workshops in
-            DispatchQueue.main.async {
-                self.workshops = workshops
-            }
-        }
+        delegate?.didPullToRefresh(in: self)
     }
 
     // MARK: - Table view data source
@@ -133,5 +95,42 @@ class MyScheduleViewController: UITableViewController {
         dequeuedCell.detailTextLabel?.text = item.detail
         dequeuedCell.imageView?.image = item.image
         return dequeuedCell
+    }
+
+    // MARK: - Nested Types
+
+    private enum State {
+        case loading
+        case empty
+        case notEmpty([Workshop])
+
+        var items: [Item] {
+            switch self {
+            case .loading:
+                return [Item.init(text: "Loading...")]
+            case .empty:
+                return [Item.init(text: "No Workshops Found")]
+            case .notEmpty(let workshops):
+                return workshops.map(Item.init)
+            }
+        }
+    }
+
+    private struct Item {
+        let text: String
+        let detail: String
+        let image: UIImage?
+
+        init(text: String, detail: String = "", image: UIImage? = nil) {
+            self.text = text
+            self.detail = detail
+            self.image = image
+        }
+
+        init(workshop: Workshop) {
+            self.text = workshop.name
+            self.detail = workshop.shortDescription
+            self.image = workshop.image
+        }
     }
 }

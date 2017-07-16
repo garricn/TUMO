@@ -10,26 +10,25 @@ import UIKit
 
 class NavigationController: UINavigationController, AuthenticationDelegate, MyScheduleViewControllerDelegate {
 
-    var user: User? {
+    private var user: User? {
         didSet {
             if let user = user {
                 User.archive(user)
             } else {
                 User.remove()
             }
-
             setup()
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setup()
+        user = User.unarchived
     }
 
     func setup() {
         if let user = user {
-            let viewController = MyScheduleViewController(user: user, workshops: Workshop.unarchived)
+            let viewController = MyScheduleViewController(user: user)
             viewController.delegate = self
             setViewControllers([viewController], animated: false)
         } else {
@@ -50,10 +49,20 @@ class NavigationController: UINavigationController, AuthenticationDelegate, MySc
         viewController.dismiss(animated: true, completion: nil)
     }
 
-    // MARK: - MySchedule ViewController Delegate
+    // MARK: - MyScheduleViewController Delegate
 
-    func didTapLogOutButton(in viewController: UIViewController) {
+    func didTapLogOutButton(in viewController: MyScheduleViewController) {
         user = nil
-        Workshop.removeAll()
+    }
+
+    func didPullToRefresh(in viewController: MyScheduleViewController) {
+        guard let user = user else { return }
+
+        User.fetchWorkshops(for: user) { workshops in
+            DispatchQueue.main.async {
+                self.user = User(id: user.id, name: user.name, workshops: workshops ?? [])
+                viewController.user = self.user!
+            }
+        }
     }
 }

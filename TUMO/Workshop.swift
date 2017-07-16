@@ -19,14 +19,6 @@ class Workshop: NSObject, NSCoding {
     let shortDescription: String
     let longDescription: String
 
-    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("workshops")
-
-    static var unarchived: [Workshop]? {
-        let file = Workshop.ArchiveURL.path
-        return NSKeyedUnarchiver.unarchiveObject(withFile: file) as? [Workshop]
-    }
-
     init(name: String,
          startDate: String,
          endDate: String,
@@ -81,10 +73,12 @@ class Workshop: NSObject, NSCoding {
             let image = UIImage.init(named: imageName),
             let short = dictionary[.short] as? String,
             let long = dictionary[.long] as? String,
-            let focusAreaRawValue = dictionary[.focusArea] as? Int,
-            let skillRawValue = dictionary[.skill] as? Int,
-            let focusArea = FocusArea(rawValue: focusAreaRawValue),
-            let skill = Skill(rawValue: skillRawValue) else {
+            let focusAreaString = dictionary[.focusArea] as? String,
+            let skillString = dictionary[.skill] as? String,
+            let focusAreaInt = Int(focusAreaString),
+            let skillInt = Int(skillString),
+            let focusArea = FocusArea(rawValue: focusAreaInt),
+            let skill = Skill(rawValue: skillInt) else {
                 return nil
         }
 
@@ -109,20 +103,6 @@ class Workshop: NSObject, NSCoding {
         aCoder.encode(image, forKey: .image)
         aCoder.encode(shortDescription, forKey: .short)
         aCoder.encode(longDescription, forKey: .long)
-    }
-
-    @discardableResult static func archive(_ workshops: [Workshop]) -> Bool {
-        if NSKeyedArchiver.archiveRootObject(workshops, toFile: Workshop.ArchiveURL.path) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    static func removeAll() {
-        if FileManager.default.fileExists(atPath: Workshop.ArchiveURL.path) {
-            try? FileManager.default.removeItem(at: Workshop.ArchiveURL)
-        }
     }
 
     typealias JSON = [String: Any]
