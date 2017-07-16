@@ -18,7 +18,8 @@
 		60521B681F14F095002315B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60521B671F14F095002315B7 /* Assets.xcassets */; };
 		60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60521B691F14F095002315B7 /* LaunchScreen.storyboard */; };
 		60521B731F14F3F4002315B7 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */; };
-		60C58F221F1B5E060072E156 /* mockUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C58F211F1B5E060072E156 /* mockUser.json */; };
+		60C58F241F1B870D0072E156 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C58F231F1B870D0072E156 /* Credential.swift */; };
+		60C58F261F1B8C4D0072E156 /* mockUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C58F251F1B8C4D0072E156 /* mockUser.json */; };
 		60C8B26A1F17A48D00F8015B /* Workshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8B2691F17A48D00F8015B /* Workshop.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +37,8 @@
 		60521B6A1F14F095002315B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60521B6C1F14F095002315B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
-		60C58F211F1B5E060072E156 /* mockUser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockUser.json; sourceTree = "<group>"; };
+		60C58F231F1B870D0072E156 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		60C58F251F1B8C4D0072E156 /* mockUser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mockUser.json; path = ../mockUser.json; sourceTree = "<group>"; };
 		60C8B2691F17A48D00F8015B /* Workshop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workshop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,14 +72,15 @@
 		60521B5F1F14F095002315B7 /* TUMO */ = {
 			isa = PBXGroup;
 			children = (
+				60C58F251F1B8C4D0072E156 /* mockUser.json */,
 				6006D78C1F1A73E20074674D /* mockWorkshops.json */,
-				60C58F211F1B5E060072E156 /* mockUser.json */,
 				60521B601F14F095002315B7 /* AppDelegate.swift */,
 				602BBAA91F18DA9E00030791 /* AuthenticationView.swift */,
 				602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */,
 				60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */,
 				6006D7861F1A02530074674D /* NavigationController.swift */,
 				6006D7881F1A11A60074674D /* User.swift */,
+				60C58F231F1B870D0072E156 /* Credential.swift */,
 				60C8B2691F17A48D00F8015B /* Workshop.swift */,
 				6006D7901F1A85490074674D /* Skill.swift */,
 				6006D78E1F1A85360074674D /* FocusArea.swift */,
@@ -150,7 +153,7 @@
 			files = (
 				60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */,
 				6006D78D1F1A73E20074674D /* mockWorkshops.json in Resources */,
-				60C58F221F1B5E060072E156 /* mockUser.json in Resources */,
+				60C58F261F1B8C4D0072E156 /* mockUser.json in Resources */,
 				60521B681F14F095002315B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +167,7 @@
 			files = (
 				60C8B26A1F17A48D00F8015B /* Workshop.swift in Sources */,
 				60521B731F14F3F4002315B7 /* MyScheduleViewController.swift in Sources */,
+				60C58F241F1B870D0072E156 /* Credential.swift in Sources */,
 				60521B611F14F095002315B7 /* AppDelegate.swift in Sources */,
 				6006D7911F1A85490074674D /* Skill.swift in Sources */,
 				6006D78F1F1A85360074674D /* FocusArea.swift in Sources */,

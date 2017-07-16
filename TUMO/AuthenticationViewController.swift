@@ -46,17 +46,17 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func configureKeyboardObservers() {
-        center.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil) { notification in
-            self.authenticationView.centerYConstraint?.constant = -50
+        center.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil) { [weak self] notification in
+            self?.authenticationView.centerYConstraint?.constant = -50
             UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
+                self?.view.layoutIfNeeded()
             }
         }
 
-        center.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil) { notification in
-            self.authenticationView.centerYConstraint?.constant = 0
+        center.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil) { [weak self] notification in
+            self?.authenticationView.centerYConstraint?.constant = 0
             UIView.animate(withDuration: 0.5) {
-                self.view.layoutIfNeeded()
+                self?.view.layoutIfNeeded()
             }
         }
     }
@@ -82,16 +82,16 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         }
 
         let credential = Credential(username: username, password: password)
-        User.authenticate(with: credential) { user in
+        User.authenticate(with: credential) { [unowned self] user in
             guard let user = user else {
                 print("Could not authenticate user!")
                 return
             }
-            self.delegate?.didFinishAuthenticating(user: user, in: self)
+            DispatchQueue.main.async {
+                self.delegate?.didFinishAuthenticating(user: user, in: self)
+            }
         }
     }
-
-
 
     // MARK: - UITextField Delegate
 

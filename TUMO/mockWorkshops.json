@@ -4,8 +4,8 @@
         "startDate": "2017-07-10T14:30:00+0000",
         "endDate": "2017-07-21T15:30:00+0000",
         "leader": "Garric Nahapetian",
-        "focusArea": 1,
-        "skill": 5,
+        "focusArea": "1",
+        "skill": "5",
         "imageName": "swiftWorkshop",
         "short": "Learn to make iOS Apps using Swift & Xcode",
         "long": "Learn the basics of iOS Development using Swift & Xcode."
