@@ -18,6 +18,7 @@
 		60521B681F14F095002315B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60521B671F14F095002315B7 /* Assets.xcassets */; };
 		60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60521B691F14F095002315B7 /* LaunchScreen.storyboard */; };
 		60521B731F14F3F4002315B7 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */; };
+		60C58F221F1B5E060072E156 /* mockUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C58F211F1B5E060072E156 /* mockUser.json */; };
 		60C8B26A1F17A48D00F8015B /* Workshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8B2691F17A48D00F8015B /* Workshop.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		60521B6A1F14F095002315B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60521B6C1F14F095002315B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
+		60C58F211F1B5E060072E156 /* mockUser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockUser.json; sourceTree = "<group>"; };
 		60C8B2691F17A48D00F8015B /* Workshop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workshop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				6006D78C1F1A73E20074674D /* mockWorkshops.json */,
+				60C58F211F1B5E060072E156 /* mockUser.json */,
 				60521B601F14F095002315B7 /* AppDelegate.swift */,
 				602BBAA91F18DA9E00030791 /* AuthenticationView.swift */,
 				602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */,
@@ -147,6 +150,7 @@
 			files = (
 				60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */,
 				6006D78D1F1A73E20074674D /* mockWorkshops.json in Resources */,
+				60C58F221F1B5E060072E156 /* mockUser.json in Resources */,
 				60521B681F14F095002315B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

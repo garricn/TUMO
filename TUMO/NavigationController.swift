@@ -35,11 +35,11 @@ class NavigationController: UINavigationController, AuthenticationDelegate, MySc
         } else {
             let viewController = AuthenticationViewController()
             viewController.delegate = self
-            viewControllers.first?.present(viewController, animated: true, completion: {
+            viewControllers.first?.present(viewController, animated: true) {
                 let viewController = UIViewController()
                 viewController.view.backgroundColor = .white
                 self.setViewControllers([viewController], animated: false)
-            })
+            }
         }
     }
 
