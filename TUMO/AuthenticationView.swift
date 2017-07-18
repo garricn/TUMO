@@ -10,30 +10,38 @@ import UIKit
 
 class AuthenticationView: UIView {
 
-    let infoLabel = UILabel()
+//    let infoLabel = UILabel()
+    
+    let logoimage = UIImage(named: "logo")
+    let logoimageview = UIImageView()
     let usernameTextField = UITextField()
     let passwordTextField = UITextField()
     let actionButton = UIButton()
 
     var centerYConstraint: NSLayoutConstraint?
 
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         backgroundColor = .white
-
-        addSubview(infoLabel)
+        
+        logoimageview.image = logoimage
+        
+//        addSubview(infoLabel)
+        addSubview(logoimageview)
         addSubview(usernameTextField)
         addSubview(passwordTextField)
         addSubview(actionButton)
 
-        infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        //infoLabel.translatesAutoresizingMaskIntoConstraints = false
+        logoimageview.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         actionButton.translatesAutoresizingMaskIntoConstraints = false
 
-        infoLabel.text = "TUMO"
-        infoLabel.textAlignment = .center
+        //infoLabel.text = "TUMO"
+        //infoLabel.textAlignment = .center
 
         usernameTextField.placeholder = "Username"
         usernameTextField.borderStyle = .roundedRect
@@ -52,9 +60,9 @@ class AuthenticationView: UIView {
 
         // MARK: - Constraining X Axis
 
-        infoLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-
+        //infoLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        //infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
         usernameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
         usernameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
 
@@ -66,10 +74,13 @@ class AuthenticationView: UIView {
 
         // MARK: - Constraining Y Axis
 
+        logoimageview.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10).isActive = true
+        logoimageview.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
         centerYConstraint = passwordTextField.centerYAnchor.constraint(equalTo: centerYAnchor)
         centerYConstraint?.isActive = true
 
-        infoLabel.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10).isActive = true
+        //infoLabel.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10).isActive = true
         usernameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10).isActive = true
         actionButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
     }
