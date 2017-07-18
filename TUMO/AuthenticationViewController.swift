@@ -63,6 +63,10 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
 
     private func configureView() {
         usernameTextField.delegate = self
+        usernameTextField.tag = 0
+        usernameTextField.returnKeyType = UIReturnKeyType.next
+        passwordTextField.tag = 1
+        passwordTextField.returnKeyType = UIReturnKeyType.done
         passwordTextField.delegate = self
         actionButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         actionButton.isEnabled = false
@@ -108,6 +112,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
             && !usernameTextField.text!.isEmpty
         return true
     }
+    
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         login()
