@@ -78,20 +78,12 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
 
     private func login() {
         guard let usernameText = usernameTextField.text,
-            let passwordText = passwordTextField.text else {
+            let passwordText = passwordTextField.text,
+            let username = Username(rawValue: usernameText),
+            let password = Password(rawValue: passwordText) else {
                 return
         }
-
-        guard let username = Username(rawValue: usernameText) else {
-            usernameTextField.text = "Invalid username"
-            return
-        }
-
-        guard let password = Password(rawValue: passwordText) else {
-            passwordTextField.text = "Invalid password"
-            return
-        }
-
+        
         let credential = Credential(username: username, password: password)
 
         User.authenticate(with: credential) { [unowned self] user in
@@ -118,4 +110,53 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         login()
         return true
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == usernameTextField {
+            let username = Username(rawValue: textField.text!)
+            if username == nil {
+                let animation = CABasicAnimation(keyPath: "position")
+                animation.duration = 0.07
+                animation.repeatCount = 4
+                animation.autoreverses = true
+                animation.fromValue = NSValue(cgPoint: cgPointMake(textField.center.x - 10, textField.center.y))
+                animation.toValue = NSValue(cgPoint: cgPointMake(textField.center.x + 10, textField.center.y))
+                textField.layer.add(animation, forKey: "position")
+                
+                
+                textField.layer.cornerRadius = 5.0
+                textField.layer.masksToBounds = true
+                textField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
+                textField.layer.borderWidth = 2.0
+                textField.text = ""
+                textField.placeholder = "Invalid Username"
+            } else {
+                textField.layer.borderWidth = 0.25
+                textField.layer.borderColor = UIColor.lightGray.cgColor
+            }
+        }
+        
+        if textField == passwordTextField {
+            let password = Password(rawValue: textField.text!)
+            if password == nil {
+                textField.layer.cornerRadius = 5.0
+                textField.layer.masksToBounds = true
+                textField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
+                textField.layer.borderWidth = 2.0
+                textField.text = ""
+                textField.placeholder = "Invalid Password"
+            } else {
+                textField.layer.borderWidth = 0.25
+                textField.layer.borderColor = UIColor.lightGray.cgColor
+            }
+        }
+    }
 }
+
+
+
+
+
+
+
+
