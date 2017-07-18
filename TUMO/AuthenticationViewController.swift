@@ -115,15 +115,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         if textField == usernameTextField {
             let username = Username(rawValue: textField.text!)
             if username == nil {
-                let animation = CABasicAnimation(keyPath: "position")
-                animation.duration = 0.07
-                animation.repeatCount = 4
-                animation.autoreverses = true
-                animation.fromValue = NSValue(cgPoint: cgPointMake(textField.center.x - 10, textField.center.y))
-                animation.toValue = NSValue(cgPoint: cgPointMake(textField.center.x + 10, textField.center.y))
-                textField.layer.add(animation, forKey: "position")
-                
-                
                 textField.layer.cornerRadius = 5.0
                 textField.layer.masksToBounds = true
                 textField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
