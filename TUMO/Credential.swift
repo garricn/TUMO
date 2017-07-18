@@ -42,6 +42,21 @@ struct Password {
 
         // Rules
             // must be greater than 6 characters
+        
+        let escapedCharacters = "\\\""
+        let specialCharacters = "!@#$%^&*(){}[]~`'|:;<>,.?/-+=".appending(escapedCharacters)
+        
+        for character in specialCharacters.characters {
+            if rawValue.characters.contains(character) {
+                return nil
+            }
+        }
+
+        
+        if rawValue.characters.count < 6 {
+            return nil
+        }
+        
         self.rawValue = rawValue
     }
 }

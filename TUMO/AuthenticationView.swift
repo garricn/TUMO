@@ -47,8 +47,11 @@ class AuthenticationView: UIView {
         usernameTextField.borderStyle = .roundedRect
         usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
+        usernameTextField.layer.borderColor = UIColor.gray.cgColor
+
         passwordTextField.placeholder = "Password"
         passwordTextField.borderStyle = .roundedRect
+        passwordTextField.layer.borderColor = UIColor.gray.cgColor
         passwordTextField.isSecureTextEntry = true
 
         actionButton.setTitle("LOGIN", for: .normal)
@@ -90,3 +93,6 @@ class AuthenticationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
+
