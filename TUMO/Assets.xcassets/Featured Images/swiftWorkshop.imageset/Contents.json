@@ -4,6 +4,15 @@
       "idiom" : "universal",
       "filename" : "110634_ZR_070_Robots2.jpg",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "filename" : "logo.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
