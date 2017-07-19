@@ -12,6 +12,8 @@ class User: NSObject, NSCoding {
     let id: String
     let name: String
     var workshops: [Workshop]
+    let username: String
+    let password: String
 
     static let DocumentsDirectory: URL = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("user")
@@ -21,37 +23,46 @@ class User: NSObject, NSCoding {
         return NSKeyedUnarchiver.unarchiveObject(withFile: file) as? User
     }
 
-    init(id: String, name: String, workshops: [Workshop]) {
+    init(id: String, name: String, workshops: [Workshop], password: String, username: String) {
         self.id = id
         self.name = name
         self.workshops = workshops
+        self.username = username
+        self.password = password
     }
 
     convenience init?(dictionary: [String: Any]) {
         guard let id = dictionary[.id] as? String,
             let name = dictionary[.giveName] as? String,
+            let username = dictionary[.username] as? String,
+            let password = dictionary[.password] as? String,
             let workshopDicts = dictionary[.workshops] as? [[String: Any]] else {
                 return nil
         }
 
         let workshops = workshopDicts.flatMap(Workshop.init)
-        self.init(id: id, name: name, workshops: workshops)
+        self.init(id: id, name: name, workshops: workshops, password: password, username: username)
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
         guard let id = aDecoder.decodeObject(forKey: .id) as? String,
             let name = aDecoder.decodeObject(forKey: .name) as? String,
+            let username = aDecoder.decodeObject(forKey: .username) as? String,
+            let password = aDecoder.decodeObject(forKey: .password) as? String,
             let workshops = aDecoder.decodeObject(forKey: .workshops) as? [Workshop] else {
                 return nil
         }
+        
 
-        self.init(id: id, name: name, workshops: workshops)
+        self.init(id: id, name: name, workshops: workshops, password: password, username: username)
     }
 
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id, forKey: .id)
         aCoder.encode(name, forKey: .name)
         aCoder.encode(workshops, forKey: .workshops)
+        aCoder.encode(username, forKey: .username)
+        aCoder.encode(password, forKey: .password)
     }
 
     @discardableResult static func archive(_ user: User) -> Bool {
@@ -93,9 +104,20 @@ class User: NSObject, NSCoding {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                let userDict = json as? [String: Any] ?? [:]
-                let user = User(dictionary: userDict)
-                completion(user)
+                let usersDict = json as? [[String: Any]] ?? []
+                let _users = usersDict.flatMap(User.init)
+                
+                // Fake authentication
+                for user in _users {
+                    if user.username == credential.username.rawValue
+                        && user.password == credential.password.rawValue {
+                        completion(user)
+                    }
+                }
+                
+                // If no matching credentials then call completion with nil to fake invalid authentication
+                completion(nil)
+                
             } catch {
                 print(error)
             }
@@ -142,4 +164,6 @@ private extension String {
     static let name = "name"
     static let giveName = "givenName"
     static let workshops = "workshops"
+    static let username = "username"
+    static let password = "password"
 }
