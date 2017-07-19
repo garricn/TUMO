@@ -43,18 +43,18 @@ class AuthenticationView: UIView {
         //infoLabel.text = "TUMO"
         //infoLabel.textAlignment = .center
 
-        usernameTextField.placeholder = "Username"
+        usernameTextField.placeholder = NSLocalizedString("username", comment: "").capitalized
         usernameTextField.borderStyle = .roundedRect
         usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         usernameTextField.layer.borderColor = UIColor.gray.cgColor
 
-        passwordTextField.placeholder = "Password"
+        passwordTextField.placeholder = NSLocalizedString("password", comment: "").capitalized
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.layer.borderColor = UIColor.gray.cgColor
         passwordTextField.isSecureTextEntry = true
-
-        actionButton.setTitle("LOGIN", for: .normal)
+        
+        actionButton.setTitle(NSLocalizedString("login", comment: "").uppercased(), for: .normal)
         actionButton.setTitleColor(.blue, for: .normal)
         actionButton.setTitleColor(.gray, for: .highlighted)
         actionButton.backgroundColor = .white
@@ -93,6 +93,4 @@ class AuthenticationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-
 

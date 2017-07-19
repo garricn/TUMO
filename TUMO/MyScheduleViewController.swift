@@ -56,12 +56,12 @@ class MyScheduleViewController: UITableViewController {
     }
 
     private func configureView() {
-        title = "My Schedule"
+        title = NSLocalizedString("My Schedule", comment: "")
         refreshControl = UIRefreshControl()
         refreshControl?.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
         let selector = #selector(didTapLogOut)
-        let logoutButton = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: selector)
+        let logoutButton = UIBarButtonItem(title: NSLocalizedString("Log Out", comment: ""), style: .plain, target: self, action: selector)
         navigationItem.rightBarButtonItem = logoutButton
     }
 
@@ -116,7 +116,7 @@ class MyScheduleViewController: UITableViewController {
         let viewController = WorkshopDetailViewController(workshop: workshop)
         viewController.view.backgroundColor = .white
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = NSLocalizedString("Back", comment: "")
         navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -131,9 +131,9 @@ class MyScheduleViewController: UITableViewController {
         var items: [Item] {
             switch self {
             case .loading:
-                return [Item(text: "Loading...")]
+                return [Item(text: NSLocalizedString("Loading...", comment: ""))]
             case .empty:
-                return [Item(text: "No Workshops Found")]
+                return [Item(text: NSLocalizedString("No Workshops Found", comment: ""))]
             case .notEmpty(let workshops):
                 return workshops.map(Item.init)
             }
@@ -144,7 +144,7 @@ class MyScheduleViewController: UITableViewController {
             case .empty:
                 return [Section(title: "Empty", items: [Item(text: "No Workshops Found")])]
             case .loading:
-                return [Section.init(title: "Loading...", items: [Item(text: "Loading...")])]
+                return [Section(title: nil, items: [Item(text: "Loading...")])]
             case .notEmpty(let workshops):
                 return Section.sections(from: workshops)
             }
@@ -174,7 +174,7 @@ class MyScheduleViewController: UITableViewController {
     }
 
     private struct Section {
-        let title: String
+        let title: String?
         let items: [Item]
 
         static func sections(from workshops: [Workshop]) -> [Section] {
@@ -191,7 +191,7 @@ class MyScheduleViewController: UITableViewController {
                     return monthString == month
                 }
                 let itemsForSection = workshopsForSection.map(Item.init)
-                return Section.init(title: monthString, items: itemsForSection)
+                return Section.init(title: NSLocalizedString(monthString, comment:""), items: itemsForSection)
             }
 
             return sections

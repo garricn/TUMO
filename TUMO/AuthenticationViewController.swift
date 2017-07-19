@@ -13,7 +13,7 @@ protocol AuthenticationDelegate: class {
 }
 
 class AuthenticationViewController: UIViewController, UITextFieldDelegate {
-
+    
     weak var delegate: AuthenticationDelegate?
 
     var errUsername = false
@@ -21,33 +21,48 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     let authenticationView = AuthenticationView()
     let center = NotificationCenter.default
-
+    
     var usernameTextField: UITextField {
         return authenticationView.usernameTextField
     }
-
+    
     var passwordTextField: UITextField {
         return authenticationView.passwordTextField
     }
-
+    
     var actionButton: UIButton {
         return authenticationView.actionButton
     }
-
+    
     deinit {
         center.removeObserver(self)
     }
-
+    
     override func loadView() {
         view = authenticationView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureKeyboardObservers()
         configureView()
+        
+        usernameTextField.delegate = self
+        
+        usernameTextField.tag = 0
+        
+        usernameTextField.returnKeyType = UIReturnKeyType.next
+        
+        passwordTextField.delegate = self
+        
+        passwordTextField.tag = 1
+        
+        
+        passwordTextField.returnKeyType = UIReturnKeyType.go
+        
     }
-
+    
+    
     private func configureKeyboardObservers() {
         center.addObserver(forName: .UIKeyboardWillShow, object: nil, queue: nil) { [weak self] notification in
             self?.authenticationView.centerYConstraint?.constant = -50
@@ -55,7 +70,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                 self?.view.layoutIfNeeded()
             }
         }
-
+        
         center.addObserver(forName: .UIKeyboardWillHide, object: nil, queue: nil) { [weak self] notification in
             self?.authenticationView.centerYConstraint?.constant = 0
             UIView.animate(withDuration: 0.5) {
@@ -63,23 +78,19 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-
+    
     private func configureView() {
         usernameTextField.autocorrectionType = .no
         usernameTextField.delegate = self
-        usernameTextField.tag = 0
-        usernameTextField.returnKeyType = UIReturnKeyType.next
-        passwordTextField.tag = 1
-        passwordTextField.returnKeyType = UIReturnKeyType.done
         passwordTextField.delegate = self
         actionButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
         actionButton.isEnabled = false
     }
-
+    
     @objc private func didTapLoginButton(sender: UIButton) {
         login()
     }
-
+    
     private func login() {
         guard let usernameText = usernameTextField.text,
             let passwordText = passwordTextField.text,
@@ -126,18 +137,21 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-
+    
     // MARK: - UITextField Delegate
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         actionButton.isEnabled = !passwordTextField.text!.isEmpty
             && !usernameTextField.text!.isEmpty
         return true
     }
     
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        login()
+        if textField.isEqual(usernameTextField) {
+            passwordTextField.becomeFirstResponder()
+        } else if textField.isEqual(passwordTextField) {
+            login()
+        }
         return true
     }
     
@@ -151,7 +165,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                 textField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
                 textField.layer.borderWidth = 2.0
                 textField.text = ""
-                textField.placeholder = "Invalid Username"
+                textField.placeholder = NSLocalizedString("Invalid Username", comment: "")
             } else {
                 textField.layer.borderWidth = 0.25
                 textField.layer.borderColor = UIColor.lightGray.cgColor
@@ -168,7 +182,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                 textField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
                 textField.layer.borderWidth = 2.0
                 textField.text = ""
-                textField.placeholder = "Invalid Password"
+                textField.placeholder = NSLocalizedString("Invalid Password", comment: "")
             } else {
                 errPassword = false
                 textField.layer.borderWidth = 0.25
