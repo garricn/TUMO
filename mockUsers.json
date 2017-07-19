@@ -1,8 +1,7 @@
-[
-{
+[{
 	"id": "123456789",
 	"username": "garricn",
-    "password": "123456",
+    "password": "password",
 	"givenName": "Garric",
 	"middleName": "Gaspar",
 	"familyName": "Nahapetian",
@@ -142,13 +141,13 @@
                   "short": "Learn to create different types of character personalities and their expressions",
                   "long": "Learn to create different types of character personalities and their expressions and gain experience with different literary genres"
                   }]
- },{
-	"id": "123456789",
-	"username": "mark",
-    "password": "4321",
-	"givenName": "Garric",
-	"middleName": "Gaspar",
-	"familyName": "Nahapetian",
+ }, {
+	"id": "123garen789",
+	"username": "garend",
+    "password": "lemon0",
+	"givenName": "Garen",
+	"middleName": "",
+	"familyName": "Donnagosyan",
 	"workshops": [{
                   "name": "Swift & iOS Programming Workshop",
                   "startDate": "2017-07-10T14:30:00+0000",
@@ -284,6 +283,6 @@
                   "imageName": "swiftWorkshop",
                   "short": "Learn to create different types of character personalities and their expressions",
                   "long": "Learn to create different types of character personalities and their expressions and gain experience with different literary genres"
-                  }]
+                  }],
  }
 ]

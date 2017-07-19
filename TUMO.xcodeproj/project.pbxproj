@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6006D7871F1A02530074674D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006D7861F1A02530074674D /* NavigationController.swift */; };
 		6006D7891F1A11A60074674D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006D7881F1A11A60074674D /* User.swift */; };
-		6006D78D1F1A73E20074674D /* mockWorkshops.json in Resources */ = {isa = PBXBuildFile; fileRef = 6006D78C1F1A73E20074674D /* mockWorkshops.json */; };
 		602BBAAA1F18DA9E00030791 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BBAA91F18DA9E00030791 /* AuthenticationView.swift */; };
 		602BBAAC1F18E13000030791 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */; };
 		60521B611F14F095002315B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60521B601F14F095002315B7 /* AppDelegate.swift */; };
@@ -19,7 +18,7 @@
 		606748FE1F20BF1B00DC41B3 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606748FC1F20BF1B00DC41B3 /* DateFormat.swift */; };
 		606748FF1F20BF1B00DC41B3 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */; };
 		60C58F241F1B870D0072E156 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C58F231F1B870D0072E156 /* Credential.swift */; };
-		60C58F261F1B8C4D0072E156 /* mockUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C58F251F1B8C4D0072E156 /* mockUser.json */; };
+		60C58F261F1B8C4D0072E156 /* mockUsers.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C58F251F1B8C4D0072E156 /* mockUsers.json */; };
 		60C8B26A1F17A48D00F8015B /* Workshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8B2691F17A48D00F8015B /* Workshop.swift */; };
 		84C466AD1F20D1FC0053845E /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C466AC1F20D1FC0053845E /* MyTableViewCell.swift */; };
 		84F081251F1E1EF10072A197 /* WorkshopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F081241F1E1EF10072A197 /* WorkshopDetailViewController.swift */; };
@@ -28,7 +27,6 @@
 /* Begin PBXFileReference section */
 		6006D7861F1A02530074674D /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6006D7881F1A11A60074674D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		6006D78C1F1A73E20074674D /* mockWorkshops.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockWorkshops.json; sourceTree = "<group>"; };
 		602BBAA91F18DA9E00030791 /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		60521B5D1F14F095002315B7 /* TUMO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TUMO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,7 +38,7 @@
 		606748FC1F20BF1B00DC41B3 /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		60C58F231F1B870D0072E156 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
-		60C58F251F1B8C4D0072E156 /* mockUser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mockUser.json; path = ../mockUser.json; sourceTree = "<group>"; };
+		60C58F251F1B8C4D0072E156 /* mockUsers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mockUsers.json; path = ../mockUsers.json; sourceTree = "<group>"; };
 		60C8B2691F17A48D00F8015B /* Workshop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workshop.swift; sourceTree = "<group>"; };
 		84C466AC1F20D1FC0053845E /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		84F081241F1E1EF10072A197 /* WorkshopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorkshopDetailViewController.swift; path = ../WorkshopDetailViewController.swift; sourceTree = "<group>"; };
@@ -78,8 +76,7 @@
 			children = (
 				606748FC1F20BF1B00DC41B3 /* DateFormat.swift */,
 				606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */,
-				60C58F251F1B8C4D0072E156 /* mockUser.json */,
-				6006D78C1F1A73E20074674D /* mockWorkshops.json */,
+				60C58F251F1B8C4D0072E156 /* mockUsers.json */,
 				60521B601F14F095002315B7 /* AppDelegate.swift */,
 				602BBAA91F18DA9E00030791 /* AuthenticationView.swift */,
 				602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */,
@@ -158,8 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */,
-				6006D78D1F1A73E20074674D /* mockWorkshops.json in Resources */,
-				60C58F261F1B8C4D0072E156 /* mockUser.json in Resources */,
+				60C58F261F1B8C4D0072E156 /* mockUsers.json in Resources */,
 				60521B681F14F095002315B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
