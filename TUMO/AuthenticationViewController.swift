@@ -115,6 +115,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         if textField == usernameTextField {
             let username = Username(rawValue: textField.text!)
             if username == nil {
+                textField.shake()
                 textField.layer.cornerRadius = 5.0
                 textField.layer.masksToBounds = true
                 textField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
@@ -130,6 +131,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         if textField == passwordTextField {
             let password = Password(rawValue: textField.text!)
             if password == nil {
+                textField.shake()
                 textField.layer.cornerRadius = 5.0
                 textField.layer.masksToBounds = true
                 textField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha: 1.0 ).cgColor
@@ -144,6 +146,24 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+public extension UIView {
+    
+    func shake(count : Float? = nil,for duration : TimeInterval? = nil,withTranslation translation : Float? = nil) {
+        let defaultRepeatCount = 3
+        let defaultTotalDuration = 0.2
+        let defaultTranslation = -2
+        
+        let animation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        
+        animation.repeatCount = count ?? Float(defaultRepeatCount)
+        animation.duration = (duration ?? defaultTotalDuration)/TimeInterval(animation.repeatCount)
+        animation.autoreverses = true
+        animation.byValue = translation ?? defaultTranslation
+        layer.add(animation, forKey: "shake")
+        
+    }    
+}
 
 
 
