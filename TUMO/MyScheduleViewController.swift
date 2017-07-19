@@ -109,10 +109,13 @@ class MyScheduleViewController: UITableViewController {
     // MARK: - UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = items[indexPath.row]
-        let viewController = UIViewController()
+        guard let workshop = items[indexPath.row].workshop else { return }
+        
+        let viewController = WorkshopDetailViewController(workshop: workshop)
         viewController.view.backgroundColor = .white
-        viewController.title = item.workshop?.name
+        let backItem = UIBarButtonItem()
+        backItem.title = "Back"
+        navigationItem.backBarButtonItem = backItem
         navigationController?.pushViewController(viewController, animated: true)
     }
 
