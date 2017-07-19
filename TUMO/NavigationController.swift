@@ -60,7 +60,15 @@ class NavigationController: UINavigationController, AuthenticationDelegate, MySc
 
         User.fetchWorkshops(for: user) { workshops in
             DispatchQueue.main.async {
-                self.user = User(id: user.id, name: user.name, workshops: workshops ?? [])
+                // Store new user
+                self.user = User(id: user.id,
+                                 name: user.name,
+                                 workshops: workshops ?? [],
+                                 password: user.password,
+                                 username: user.username
+                )
+                
+                // Inject new user into My schedule view controller
                 viewController.user = self.user!
             }
         }
