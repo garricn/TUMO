@@ -131,6 +131,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         let credential = Credential(username: username, password: password)
 
         User.authenticate(with: credential) { [unowned self] user, error in
+        
             guard let user = user else {
                 if let error = error {
                     switch error {

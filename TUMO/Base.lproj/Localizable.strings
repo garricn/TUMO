@@ -5,3 +5,42 @@
   Created by Typo on 7/19/17.
   Copyright © 2017 TUMO. All rights reserved.
 */
+"username"= "username";
+"password" = "password";
+"login" = "login";
+
+"Invalid Username" = "Invalid username";
+"Invalid Password" = "Invalid password";
+
+//"Could not authenticate user!" = "Could not authenticate user!";
+
+"My Schedule" = "My Schedule";
+"Log Out" = "Log Out";
+"Loading..." = "Loading...";
+"No Workshops Found" = "No Workshops Found";
+
+//monthString
+"January" = "January";
+"February" = "February";
+"March" = "March";
+"April" = "April";
+"May" = "May";
+"June" = "June";
+"July" = "July";
+"August" = "August";
+"September" = "September";
+"October" = "October";
+"November" = "Novermber";
+"December" = "December";
+
+"Back" = "Back";
+"Workshop Details" = "Workshop Details";
+
+"Image" = "Image";
+"Name" = "Name";
+"Leader" = "Leader";
+"Data" = "Data";
+"Description" = "Description";
+
+"logo" = "logo_en";
+

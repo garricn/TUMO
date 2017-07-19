@@ -10,7 +10,7 @@ import UIKit
 
 class AuthenticationView: UIView {
     
-    let logoimage = UIImage(named: "logo")
+    let logoimage = UIImage(named: NSLocalizedString("logo", comment: ""))
     let logoimageview = UIImageView()
     let usernameTextField = UITextField()
     let passwordTextField = UITextField()
@@ -22,6 +22,8 @@ class AuthenticationView: UIView {
     var buttonHeightConstraint: NSLayoutConstraint?
 
     let spinner = UIActivityIndicatorView()
+    
+    private let logoContainerView = UIView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,12 +31,26 @@ class AuthenticationView: UIView {
         backgroundColor = .white
         
         logoimageview.image = logoimage
-
-        addSubview(logoimageview)
+        
+        addSubview(logoContainerView)
         addSubview(usernameTextField)
         addSubview(passwordTextField)
         addSubview(actionButton)
 
+        logoContainerView.addSubview(logoimageview)
+        logoContainerView.translatesAutoresizingMaskIntoConstraints = false
+        
+        logoContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        logoContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        logoContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        logoContainerView.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor).isActive = true
+        
+        logoimageview.leadingAnchor.constraint(equalTo: logoContainerView.leadingAnchor, constant: 65).isActive = true
+        logoimageview.trailingAnchor.constraint(equalTo: logoContainerView.trailingAnchor, constant: -65).isActive = true
+        logoimageview.centerYAnchor.constraint(equalTo: logoContainerView.centerYAnchor).isActive = true
+        
+        
+        logoimageview.contentMode = .scaleAspectFit
         logoimageview.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -72,9 +88,6 @@ class AuthenticationView: UIView {
 
         buttonWidthConstraint = actionButton.widthAnchor.constraint(equalToConstant: 200)
         buttonWidthConstraint?.isActive = true
-
-        logoimageview.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10).isActive = true
-        logoimageview.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         centerYConstraint = passwordTextField.centerYAnchor.constraint(equalTo: centerYAnchor)
         centerYConstraint?.isActive = true
@@ -85,23 +98,9 @@ class AuthenticationView: UIView {
         actionButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
 
         buttonHeightConstraint = actionButton.heightAnchor.constraint(equalToConstant: 50)
-
-    }
-
-    func animateLoginButton() {
-        UIView.animate(withDuration: 0.5) {
-            self.actionButton.setTitle(nil, for: .normal)
-            self.actionButton.backgroundColor = .gray
-            self.buttonHeightConstraint?.isActive = true
-            self.buttonWidthConstraint?.constant = 50
-            self.actionButton.layer.cornerRadius = 25
-            self.spinner.startAnimating()
-            self.superview?.setNeedsLayout()
-        }
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
