@@ -23,10 +23,10 @@ class User: NSObject, NSCoding {
         return NSKeyedUnarchiver.unarchiveObject(withFile: file) as? User
     }
 
-    init(id: String, name: String, workshops: [Workshop], password: String, username: String) {
+    init(id: String, name: String, workshops: [Workshop?], password: String, username: String) {
         self.id = id
         self.name = name
-        self.workshops = workshops
+        self.workshops = workshops as! [Workshop]
         self.username = username
         self.password = password
     }
@@ -79,7 +79,13 @@ class User: NSObject, NSCoding {
         }
     }
 
-    static func authenticate(with credential: Credential, completion: @escaping (User?) -> Void) {
+    enum AuthenticationError: Error {
+        case invalidPassword
+        case invalidUsernameAndPassword
+        case unknown
+    }
+    
+    static func authenticate(with credential: Credential, completion: @escaping (User?, AuthenticationError?) -> Void) {
 
         /*
          The following is a fake HTTP request to mock a network call
@@ -99,9 +105,9 @@ class User: NSObject, NSCoding {
             guard let path = Bundle.main.path(forResource: "mockUsers", ofType: "json"),
                 let dataString = try? String(contentsOfFile: path),
                 let data = dataString.data(using: .utf8) else {
-                    return completion(nil)
+                    return completion(nil, .unknown)
             }
-
+            
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                 let usersDict = json as? [[String: Any]] ?? []
@@ -111,16 +117,21 @@ class User: NSObject, NSCoding {
                 for user in _users {
                     if user.username == credential.username.rawValue
                         && user.password == credential.password.rawValue {
-                        completion(user)
+                        completion(user, nil)
+                        return
+                    } else if(user.username == credential.username.rawValue){
+                        
+                        completion(nil, .invalidPassword)
                         return
                     }
+
                 }
                 
                 // If no matching credentials then call completion with nil to fake invalid authentication
-                completion(nil)
+                completion(nil, .invalidUsernameAndPassword)
                 
             } catch {
-                print(error)
+                completion(nil, .unknown)
             }
         }.resume()
     }
