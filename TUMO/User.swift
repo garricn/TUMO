@@ -96,7 +96,7 @@ class User: NSObject, NSCoding {
              Replace with real TUMO API json parsing
              */
 
-            guard let path = Bundle.main.path(forResource: "mockUser", ofType: "json"),
+            guard let path = Bundle.main.path(forResource: "mockUsers", ofType: "json"),
                 let dataString = try? String(contentsOfFile: path),
                 let data = dataString.data(using: .utf8) else {
                     return completion(nil)
@@ -142,7 +142,7 @@ class User: NSObject, NSCoding {
              Replace with real TUMO API json parsing
              */
 
-            guard let path = Bundle.main.path(forResource: "mockWorkshops", ofType: "json"),
+            guard let path = Bundle.main.path(forResource: "mockUsers", ofType: "json"),
                 let dataString = try? String(contentsOfFile: path),
                 let data = dataString.data(using: .utf8) else {
                     return completion(nil)
@@ -150,9 +150,15 @@ class User: NSObject, NSCoding {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                let dictionaries = json as? [[String: Any]]
-                let workshops = dictionaries?.flatMap(Workshop.init)
-                completion(workshops)
+                let usersDict = json as? [[String: Any]] ?? []
+                // create all users from json
+                let users = usersDict.flatMap(User.init)
+                // find matching user
+                let matchingUser = users.first(where: { $0.id == user.id })
+                // return that users workshops
+                if let workshops = matchingUser?.workshops {
+                    completion(workshops)
+                }
             } catch {
                 print(error)
             }
