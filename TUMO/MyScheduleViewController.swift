@@ -82,18 +82,28 @@ class MyScheduleViewController: UITableViewController {
 
     // MARK: - UITableViewDataSource
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return state.sections.count
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return state.sections[section].items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
-        let item = items[indexPath.row]
+
+        let item = state.sections[indexPath.section].items[indexPath.row]
+
         let dequeuedCell = cell ?? UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
         dequeuedCell.textLabel?.text = item.text
         dequeuedCell.detailTextLabel?.text = item.detail
         dequeuedCell.imageView?.image = item.image
         return dequeuedCell
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return state.sections[section].title
     }
 
     // MARK: - UITableViewDelegate
@@ -123,6 +133,17 @@ class MyScheduleViewController: UITableViewController {
                 return workshops.map(Item.init)
             }
         }
+
+        var sections: [Section] {
+            switch self {
+            case .empty:
+                return [Section(title: "Empty", items: [Item(text: "No Workshops Found")])]
+            case .loading:
+                return [Section.init(title: "Loading...", items: [Item(text: "Loading...")])]
+            case .notEmpty(let workshops):
+                return Section.sections(from: workshops)
+            }
+        }
     }
 
     private struct Item {
@@ -144,6 +165,31 @@ class MyScheduleViewController: UITableViewController {
                       image: workshop.image,
                       workshop: workshop
             )
+        }
+    }
+
+    private struct Section {
+        let title: String
+        let items: [Item]
+
+        static func sections(from workshops: [Workshop]) -> [Section] {
+            let allMonths: [String] = workshops.map { workshop in
+                    return DateFormatter.string(from: workshop.realStartDate, with: .MMMM)
+            }
+
+            let set = Set(allMonths)
+
+            let sections: [Section] = set.map { monthString in
+                let workshopsForSection = workshops.filter { workshop in
+                    let date = workshop.realStartDate
+                    let month = DateFormatter.string(from: date, with: .MMMM)
+                    return monthString == month
+                }
+                let itemsForSection = workshopsForSection.map(Item.init)
+                return Section.init(title: monthString, items: itemsForSection)
+            }
+
+            return sections
         }
     }
 }
