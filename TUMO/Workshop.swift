@@ -16,12 +16,16 @@ class Workshop: NSObject, NSCoding {
     let image: UIImage
     let shortDescription: String
     let longDescription: String
+    let realStartDate: Date
 
     init(name: String,
          startDate: String,
          endDate: String,
          leader: String,
-         image: UIImage, shortDescription: String, longDescription: String) {
+         image: UIImage,
+         shortDescription: String,
+         longDescription: String,
+         realStartDate: Date) {
 
         self.name = name
         self.startDate = startDate
@@ -30,6 +34,7 @@ class Workshop: NSObject, NSCoding {
         self.image = image
         self.shortDescription = shortDescription
         self.longDescription = longDescription
+        self.realStartDate = realStartDate
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -39,7 +44,8 @@ class Workshop: NSObject, NSCoding {
             let leader = aDecoder.decodeObject(forKey: .leader) as? String,
             let image = aDecoder.decodeObject(forKey: .image) as? UIImage,
             let short = aDecoder.decodeObject(forKey: .short) as? String,
-            let long = aDecoder.decodeObject(forKey: .long) as? String else {
+            let long = aDecoder.decodeObject(forKey: .long) as? String,
+            let realStartDate = aDecoder.decodeObject(forKey: "realStartDate") as? Date else {
                 return nil
         }
 
@@ -49,28 +55,32 @@ class Workshop: NSObject, NSCoding {
                   leader: leader,
                   image: image,
                   shortDescription: short,
-                  longDescription: long)
+                  longDescription: long,
+                  realStartDate: realStartDate)
     }
 
     convenience init?(dictionary: [String: Any]) {
         guard let name = dictionary[.name] as? String,
-            let startDate = dictionary[.startDate] as? String,
+            let startDateString = dictionary[.startDate] as? String,
             let endDate = dictionary[.endDate] as? String,
             let leader = dictionary[.leader] as? String,
             let imageName = dictionary[.imageName] as? String,
             let image = UIImage.init(named: imageName),
             let short = dictionary[.short] as? String,
+            let realStartDate = DateFormatter.date(from: startDateString, with: .yyyyMMddTHHmmssZ),
             let long = dictionary[.long] as? String else {
                 return nil
         }
 
         self.init(name: name,
-                  startDate: startDate,
+                  startDate: startDateString,
                   endDate: endDate,
                   leader: leader,
                   image: image,
                   shortDescription: short,
-                  longDescription: long)
+                  longDescription: long,
+                  realStartDate: realStartDate
+        )
     }
 
     func encode(with aCoder: NSCoder) {
@@ -81,6 +91,7 @@ class Workshop: NSObject, NSCoding {
         aCoder.encode(image, forKey: .image)
         aCoder.encode(shortDescription, forKey: .short)
         aCoder.encode(longDescription, forKey: .long)
+        aCoder.encode(realStartDate, forKey: "realStartDate")
     }
 }
 
