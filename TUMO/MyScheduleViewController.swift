@@ -29,13 +29,10 @@ class MyScheduleViewController: UITableViewController {
 
     private var state: State = .loading {
         didSet {
-            items = state.items
             tableView.reloadData()
             refreshControl?.endRefreshing()
         }
     }
-
-    private var items: [Item] = []
 
     init(user: User) {
         self.user = user
@@ -92,14 +89,17 @@ class MyScheduleViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell")
-
         let item = state.sections[indexPath.section].items[indexPath.row]
-
         let dequeuedCell = cell ?? UITableViewCell(style: .subtitle, reuseIdentifier: "myCell")
         dequeuedCell.textLabel?.text = item.text
         dequeuedCell.detailTextLabel?.text = item.detail
         dequeuedCell.imageView?.image = item.image
         return dequeuedCell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -109,7 +109,9 @@ class MyScheduleViewController: UITableViewController {
     // MARK: - UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let workshop = items[indexPath.row].workshop else { return }
+        guard let workshop = state.sections[indexPath.section].items[indexPath.row].workshop else {
+            return
+        }
         
         let viewController = WorkshopDetailViewController(workshop: workshop)
         viewController.view.backgroundColor = .white

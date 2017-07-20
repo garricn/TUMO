@@ -11,7 +11,7 @@
                   "endDate": "2017-07-21T15:30:00+0000",
                   "leader": "Garric Nahapetian",
                   "requiredWorkshops": "Programming 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Learn to make iOS Apps using Swift & Xcode",
                   "long": "Learn the basics of iOS Development using Swift & Xcode."
                   }, {
@@ -20,7 +20,7 @@
                   "endDate": "2017-08-26T19:30:00+0000",
                   "leader": "Arevik Arevian",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Apply the basics of Javascript & HTML",
                   "long": "Apply the basics of Javascript & HTML to create basic programs"
                   }, {
@@ -29,7 +29,7 @@
                   "endDate": "2017-09-23T19:30:00+0000",
                   "leader": "Arevik Arevian",
                   "requiredWorkshops": "Programming 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Learn fundamental concepts of OOP using using Javascript, HTML, CSS & Jquery",
                   "long": "Combine Javascript, HTML, CSS & Jquery to create a simple browser game implementing OOP"
                   }, {
@@ -38,7 +38,7 @@
                   "endDate": "2017-09-23T19:30:00+0000",
                   "leader": "Arevik Arevian",
                   "requiredWorkshops": "Programming 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Learn the fundamentals of Create.js, Node.js & SocketI.O",
                   "long": "Combine Create.js, Node.js, SocketI.O with previous experience to create a 4 player multiplayer game on a local server"
                   }, {
@@ -47,7 +47,7 @@
                   "endDate": "2017-10-28T17:30:00+0000",
                   "leader": "Rostom Kouyoumdjian",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "GraphicDesign",
                   "short": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator",
                   "long": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator & create an animated Gif image"
                   }, {
@@ -56,7 +56,7 @@
                   "endDate": "2017-11-25T17:30:00+0000",
                   "leader": "Rostom Kouyoumdjian",
                   "requiredWorkshops": "Graphic Design 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "GraphicDesign",
                   "short": "Learn the layout of / Create web pages using Adobe Photoshop",
                   "long": "Learn and understand the design layout of webpages and create your own using Adobe Photoshop"
                   }, {
@@ -65,7 +65,7 @@
                   "endDate": "2017-12-23T17:30:00+0000",
                   "leader": "Rostom Kouyoumdjian",
                   "requiredWorkshops": "Graphic Design 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "GraphicDesign",
                   "short": "Learn the logo creation process conceptually and practically using Adobe Illustrator",
                   "long": "Learn the concept and process of logo creation and present a logo of your creation using Adobe Illustrator"
                   }, {
@@ -74,7 +74,7 @@
                   "endDate": "2018-2-3T17:30:00+0000",
                   "leader": "Naira Arakelyan",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "3DModeling",
                   "short": "Learn the Basics of the 3D modelling software 3DS MAX",
                   "long": "Learn the Basics of the 3D modelling software 3DS MAX to create the model of an airplane"
                   }, {
@@ -83,7 +83,7 @@
                   "endDate": "2018-3-3T17:30:00+0000",
                   "leader": "Naira Arakelyan",
                   "requiredWorkshops": "3D Modelling 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "3DModeling",
                   "short": "Learn the Basics of the 3D character creation software ZBrush",
                   "long": "Learn the Basics of the 3D character creation software ZBrush and create a 3D character on your own"
                   }, {
@@ -92,7 +92,7 @@
                   "endDate": "2018-4-7T17:30:00+0000",
                   "leader": "Naira Arakelyan",
                   "requiredWorkshops": "3D Modelling 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "3DModeling",
                   "short": "Continue working with 3DS MAX and learn the basics of texturing using Autodesk Mudbox",
                   "long": "Continue working with 3DS MAX, learn the basics of texturing using Autodesk Mudbox and add texture to the airplane model"
                   }, {
@@ -101,7 +101,7 @@
                   "endDate": "2017-10-28T17:30:00+0000",
                   "leader": "William Shakespeare",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "WebDesign",
                   "short": "Learn the basics of web design with HTML & CSS",
                   "long": "Learn the basics of web design with HTML & CSS and create a sample web page on your own"
                   }, {
@@ -110,7 +110,7 @@
                   "endDate": "2017-11-25T17:30:00+0000",
                   "leader": "William Shakespeare",
                   "requiredWorkshops": "Web Design 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "WebDesign",
                   "short": "Learn how to work with CSS, PHP, AJAX & MySql",
                   "long": "Learn and combine CSS, PHP, AJAX & MySql to create a dynamic webpage"
                   }, {
@@ -119,7 +119,7 @@
                   "endDate": "2017-12-23T17:30:00+0000",
                   "leader": "William Shakespeare",
                   "requiredWorkshops": "Web Design 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "WebDesign",
                   "short": "Learn to use WordPress CMS",
                   "long": "Combine previous knowledge of PHP and MySql with WordPress CMS to create a webpage"
                   }, {
@@ -128,7 +128,7 @@
                   "endDate": "2017-12-23T17:30:00+0000",
                   "leader": "Charles Dickens",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Writing",
                   "short": "Learn the basic elements of storytelling",
                   "long": "Learn about narrative, actions, events, evironments & conflict"
                   }, {
@@ -137,7 +137,7 @@
                   "endDate": "2018-2-3T17:30:00+0000",
                   "leader": "Charles Dickens",
                   "requiredWorkshops": "Writing 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Writing",
                   "short": "Learn to create different types of character personalities and their expressions",
                   "long": "Learn to create different types of character personalities and their expressions and gain experience with different literary genres"
                   }]
@@ -154,7 +154,7 @@
                   "endDate": "2017-07-21T15:30:00+0000",
                   "leader": "Garric Nahapetian",
                   "requiredWorkshops": "Programming 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Learn to make iOS Apps using Swift & Xcode",
                   "long": "Learn the basics of iOS Development using Swift & Xcode."
                   }, {
@@ -163,7 +163,7 @@
                   "endDate": "2017-08-26T19:30:00+0000",
                   "leader": "Arevik Arevian",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Apply the basics of Javascript & HTML",
                   "long": "Apply the basics of Javascript & HTML to create basic programs"
                   }, {
@@ -172,7 +172,7 @@
                   "endDate": "2017-09-23T19:30:00+0000",
                   "leader": "Arevik Arevian",
                   "requiredWorkshops": "Programming 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Learn fundamental concepts of OOP using using Javascript, HTML, CSS & Jquery",
                   "long": "Combine Javascript, HTML, CSS & Jquery to create a simple browser game implementing OOP"
                   }, {
@@ -181,7 +181,7 @@
                   "endDate": "2017-09-23T19:30:00+0000",
                   "leader": "Arevik Arevian",
                   "requiredWorkshops": "Programming 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Programming",
                   "short": "Learn the fundamentals of Create.js, Node.js & SocketI.O",
                   "long": "Combine Create.js, Node.js, SocketI.O with previous experience to create a 4 player multiplayer game on a local server"
                   }, {
@@ -190,7 +190,7 @@
                   "endDate": "2017-10-28T17:30:00+0000",
                   "leader": "Rostom Kouyoumdjian",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "GraphicDesign",
                   "short": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator",
                   "long": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator & create an animated Gif image"
                   }, {
@@ -199,7 +199,7 @@
                   "endDate": "2017-11-25T17:30:00+0000",
                   "leader": "Rostom Kouyoumdjian",
                   "requiredWorkshops": "Graphic Design 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "GraphicDesign",
                   "short": "Learn the layout of / Create web pages using Adobe Photoshop",
                   "long": "Learn and understand the design layout of webpages and create your own using Adobe Photoshop"
                   }, {
@@ -208,7 +208,7 @@
                   "endDate": "2017-12-23T17:30:00+0000",
                   "leader": "Rostom Kouyoumdjian",
                   "requiredWorkshops": "Graphic Design 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "GraphicDesign",
                   "short": "Learn the logo creation process conceptually and practically using Adobe Illustrator",
                   "long": "Learn the concept and process of logo creation and present a logo of your creation using Adobe Illustrator"
                   }, {
@@ -217,7 +217,7 @@
                   "endDate": "2018-2-3T17:30:00+0000",
                   "leader": "Naira Arakelyan",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "3DModeling",
                   "short": "Learn the Basics of the 3D modelling software 3DS MAX",
                   "long": "Learn the Basics of the 3D modelling software 3DS MAX to create the model of an airplane"
                   }, {
@@ -226,7 +226,7 @@
                   "endDate": "2018-3-3T17:30:00+0000",
                   "leader": "Naira Arakelyan",
                   "requiredWorkshops": "3D Modelling 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "3DModeling",
                   "short": "Learn the Basics of the 3D character creation software ZBrush",
                   "long": "Learn the Basics of the 3D character creation software ZBrush and create a 3D character on your own"
                   }, {
@@ -235,7 +235,7 @@
                   "endDate": "2018-4-7T17:30:00+0000",
                   "leader": "Naira Arakelyan",
                   "requiredWorkshops": "3D Modelling 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "3DModeling",
                   "short": "Continue working with 3DS MAX and learn the basics of texturing using Autodesk Mudbox",
                   "long": "Continue working with 3DS MAX, learn the basics of texturing using Autodesk Mudbox and add texture to the airplane model"
                   }, {
@@ -244,7 +244,7 @@
                   "endDate": "2017-10-28T17:30:00+0000",
                   "leader": "William Shakespeare",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "WebDesign",
                   "short": "Learn the basics of web design with HTML & CSS",
                   "long": "Learn the basics of web design with HTML & CSS and create a sample web page on your own"
                   }, {
@@ -253,7 +253,7 @@
                   "endDate": "2017-11-25T17:30:00+0000",
                   "leader": "William Shakespeare",
                   "requiredWorkshops": "Web Design 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "WebDesign",
                   "short": "Learn how to work with CSS, PHP, AJAX & MySql",
                   "long": "Learn and combine CSS, PHP, AJAX & MySql to create a dynamic webpage"
                   }, {
@@ -262,7 +262,7 @@
                   "endDate": "2017-12-23T17:30:00+0000",
                   "leader": "William Shakespeare",
                   "requiredWorkshops": "Web Design 2",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "WebDesign",
                   "short": "Learn to use WordPress CMS",
                   "long": "Combine previous knowledge of PHP and MySql with WordPress CMS to create a webpage"
                   }, {
@@ -271,7 +271,7 @@
                   "endDate": "2017-12-23T17:30:00+0000",
                   "leader": "Charles Dickens",
                   "requiredWorkshops": "none",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Writing",
                   "short": "Learn the basic elements of storytelling",
                   "long": "Learn about narrative, actions, events, evironments & conflict"
                   }, {
@@ -280,7 +280,7 @@
                   "endDate": "2018-2-3T17:30:00+0000",
                   "leader": "Charles Dickens",
                   "requiredWorkshops": "Writing 1",
-                  "imageName": "swiftWorkshop",
+                  "imageName": "Writing",
                   "short": "Learn to create different types of character personalities and their expressions",
                   "long": "Learn to create different types of character personalities and their expressions and gain experience with different literary genres"
                   }],
