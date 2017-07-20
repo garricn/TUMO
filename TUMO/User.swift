@@ -112,6 +112,7 @@ class User: NSObject, NSCoding {
                     if user.username == credential.username.rawValue
                         && user.password == credential.password.rawValue {
                         completion(user)
+                        return
                     }
                 }
                 

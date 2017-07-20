@@ -23,7 +23,10 @@ class NavigationController: UINavigationController, AuthenticationDelegate, MySc
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        user = User.unarchived
+
+        if user == nil {
+            user = User.unarchived
+        }
     }
 
     private func setup() {

@@ -16,6 +16,8 @@
 		60521B681F14F095002315B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60521B671F14F095002315B7 /* Assets.xcassets */; };
 		60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60521B691F14F095002315B7 /* LaunchScreen.storyboard */; };
 		60521B731F14F3F4002315B7 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */; };
+		606748FE1F20BF1B00DC41B3 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606748FC1F20BF1B00DC41B3 /* DateFormat.swift */; };
+		606748FF1F20BF1B00DC41B3 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */; };
 		60C58F241F1B870D0072E156 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C58F231F1B870D0072E156 /* Credential.swift */; };
 		60C58F261F1B8C4D0072E156 /* mockUser.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C58F251F1B8C4D0072E156 /* mockUser.json */; };
 		60C8B26A1F17A48D00F8015B /* Workshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8B2691F17A48D00F8015B /* Workshop.swift */; };
@@ -33,6 +35,8 @@
 		60521B6A1F14F095002315B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60521B6C1F14F095002315B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
+		606748FC1F20BF1B00DC41B3 /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		60C58F231F1B870D0072E156 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		60C58F251F1B8C4D0072E156 /* mockUser.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mockUser.json; path = ../mockUser.json; sourceTree = "<group>"; };
 		60C8B2691F17A48D00F8015B /* Workshop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workshop.swift; sourceTree = "<group>"; };
@@ -68,6 +72,8 @@
 		60521B5F1F14F095002315B7 /* TUMO */ = {
 			isa = PBXGroup;
 			children = (
+				606748FC1F20BF1B00DC41B3 /* DateFormat.swift */,
+				606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */,
 				60C58F251F1B8C4D0072E156 /* mockUser.json */,
 				6006D78C1F1A73E20074674D /* mockWorkshops.json */,
 				60521B601F14F095002315B7 /* AppDelegate.swift */,
@@ -76,8 +82,8 @@
 				60521B721F14F3F4002315B7 /* MyScheduleViewController.swift */,
 				6006D7861F1A02530074674D /* NavigationController.swift */,
 				6006D7881F1A11A60074674D /* User.swift */,
-				60C58F231F1B870D0072E156 /* Credential.swift */,
 				60C8B2691F17A48D00F8015B /* Workshop.swift */,
+				60C58F231F1B870D0072E156 /* Credential.swift */,
 				60521B671F14F095002315B7 /* Assets.xcassets */,
 				60521B691F14F095002315B7 /* LaunchScreen.storyboard */,
 				60521B6C1F14F095002315B7 /* Info.plist */,
@@ -165,8 +171,10 @@
 				60521B611F14F095002315B7 /* AppDelegate.swift in Sources */,
 				6006D7891F1A11A60074674D /* User.swift in Sources */,
 				602BBAAC1F18E13000030791 /* AuthenticationViewController.swift in Sources */,
+				606748FF1F20BF1B00DC41B3 /* DateFormatterExtensions.swift in Sources */,
 				6006D7871F1A02530074674D /* NavigationController.swift in Sources */,
 				602BBAAA1F18DA9E00030791 /* AuthenticationView.swift in Sources */,
+				606748FE1F20BF1B00DC41B3 /* DateFormat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
