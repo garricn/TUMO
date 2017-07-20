@@ -59,7 +59,7 @@ final class WorkshopDetailViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            let image = UIImage(named: "myImage")!
+            let image = UIImage(named: "Programming")!
             let ratio = image.size.height / image.size.width
             return UIScreen.main.bounds.width * ratio + 20
         } else {
