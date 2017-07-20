@@ -62,6 +62,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func configureView() {
+        usernameTextField.autocorrectionType = .no
         usernameTextField.delegate = self
         usernameTextField.tag = 0
         usernameTextField.returnKeyType = UIReturnKeyType.next
