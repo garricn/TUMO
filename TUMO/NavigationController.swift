@@ -10,23 +10,19 @@ import UIKit
 
 class NavigationController: UINavigationController, AuthenticationDelegate, MyScheduleViewControllerDelegate {
 
-    private var user: User? {
+    private var user: User? = User.unarchived {
         didSet {
             if let user = user {
                 User.archive(user)
             } else {
                 User.remove()
             }
-            setup()
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if user == nil {
-            user = User.unarchived
-        }
+        setup()
     }
 
     private func setup() {
@@ -49,6 +45,7 @@ class NavigationController: UINavigationController, AuthenticationDelegate, MySc
 
     func didFinishAuthenticating(user: User, in viewController: UIViewController) {
         self.user = user
+        setup()
         viewController.dismiss(animated: true, completion: nil)
     }
 
@@ -56,6 +53,7 @@ class NavigationController: UINavigationController, AuthenticationDelegate, MySc
 
     func didTapLogOutButton(in viewController: MyScheduleViewController) {
         user = nil
+        setup()
     }
 
     func didPullToRefresh(in viewController: MyScheduleViewController) {

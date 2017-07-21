@@ -142,7 +142,7 @@ class MyScheduleViewController: UITableViewController {
         var sections: [Section] {
             switch self {
             case .empty:
-                return [Section(title: "Empty", items: [Item(text: "No Workshops Found")])]
+                return [Section(title: nil, items: [Item(text: "No Workshops Found")])]
             case .loading:
                 return [Section(title: nil, items: [Item(text: "Loading...")])]
             case .notEmpty(let workshops):
