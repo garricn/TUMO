@@ -22,6 +22,22 @@ class User: NSObject, NSCoding {
         let file = User.ArchiveURL.path
         return NSKeyedUnarchiver.unarchiveObject(withFile: file) as? User
     }
+    
+    private static var mockResourceName: String {
+        let languageCode = NSLocale.autoupdatingCurrent.languageCode!
+        switch languageCode {
+        case "hy":
+            return "mockUsers-hy"
+        default:
+            return "mockUsers-en"
+        }
+    }
+    
+    private static var mockUsersData: Data {
+        let path = Bundle.main.path(forResource: mockResourceName, ofType: "json")!
+        let dataString = try! String(contentsOfFile: path)
+        return dataString.data(using: .utf8)!
+    }
 
     init(id: String, name: String, workshops: [Workshop?], password: String, username: String) {
         self.id = id
@@ -102,14 +118,8 @@ class User: NSObject, NSCoding {
              Replace with real TUMO API json parsing
              */
 
-            guard let path = Bundle.main.path(forResource: "mockUsers", ofType: "json"),
-                let dataString = try? String(contentsOfFile: path),
-                let data = dataString.data(using: .utf8) else {
-                    return completion(nil, .unknown)
-            }
-            
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                let json = try JSONSerialization.jsonObject(with: mockUsersData, options: .allowFragments)
                 let usersDict = json as? [[String: Any]] ?? []
                 let _users = usersDict.flatMap(User.init)
                 
@@ -153,14 +163,8 @@ class User: NSObject, NSCoding {
              Replace with real TUMO API json parsing
              */
 
-            guard let path = Bundle.main.path(forResource: "mockUsers", ofType: "json"),
-                let dataString = try? String(contentsOfFile: path),
-                let data = dataString.data(using: .utf8) else {
-                    return completion(nil)
-            }
-
             do {
-                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                let json = try JSONSerialization.jsonObject(with: mockUsersData, options: .allowFragments)
                 let usersDict = json as? [[String: Any]] ?? []
                 // create all users from json
                 let users = usersDict.flatMap(User.init)
@@ -169,6 +173,8 @@ class User: NSObject, NSCoding {
                 // return that users workshops
                 if let workshops = matchingUser?.workshops {
                     completion(workshops)
+                } else {
+                    completion(nil)
                 }
             } catch {
                 print(error)

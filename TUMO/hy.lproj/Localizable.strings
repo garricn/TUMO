@@ -1,0 +1,44 @@
+/* 
+  Localizable.strings
+  TUMO
+
+  Created by Typo on 7/19/17.
+  Copyright © 2017 TUMO. All rights reserved.
+*/
+// .am
+"username"= "օգտանուն";
+"password" = "գաղտնաբառ";
+"login" = "մուտք";
+
+"Invalid Username" = "Սխալ օգտանուն";
+"Invalid Password" = "Սխալ գաղտնաբառ";
+
+//"Could not authenticate user!" = "Չհաջողվեց հաստատել օգտատիրոջը";
+
+"My Schedule" = "Իմ գրաֆիկը";
+"Log Out" = "Դուրս գալ";
+"Loading..." = "Բեռնում...";
+"No Workshops Found" = "Դասընթաց չի գտնվել";
+
+//monthString
+"January" = "Հունվար";
+"February" = "Փետրվար";
+"March" = "Մարտ";
+"April" = "Ապրիլ";
+"May" = "Մայիս";
+"June" = "Հունիս";
+"July" = "Հուլիս";
+"August" = "Օգոստոս";
+"September" = "Սեպտեմբեր";
+"October" = "Հոկտեմբեր";
+"November" = "Նոյեմբեր";
+"December" = "Դեկտեմբեր";
+
+"Back" = "Հետ";
+"Workshop Details" = "Դասընթացի Տվյալները";
+
+"Image" = "Նկար";
+"Name" = "Անուն";
+"Leader" = "Դասընթացի Ղեկավար";
+"Data" = "Ամսաթիվ";
+"Description" = "Նկարագրություն";

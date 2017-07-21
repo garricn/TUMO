@@ -1,0 +1,296 @@
+[{
+	"id": "123456789",
+	"username": "garricn",
+    "password": "password",
+	"givenName": "Garric",
+	"middleName": "Gaspar",
+	"familyName": "Nahapetian",
+	"workshops": [{
+                  "name": "Swift & iOS Programming Workshop",
+                  "startDate": "2017-07-10T14:30:00+0000",
+                  "endDate": "2017-07-21T15:30:00+0000",
+                  "leader": "Garric Nahapetian",
+                  "requiredWorkshops": "Programming 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "սովորել to make iOS Apps using Swift & Xcode",
+                  "long": "Learn the basics of iOS Development using Swift & Xcode."
+                  }, {
+                  "name": "Programming 1",
+                  "startDate": "2017-08-3T17:30:00+0000",
+                  "endDate": "2017-08-26T19:30:00+0000",
+                  "leader": "Arevik Arevian",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Apply the basics of Javascript & HTML",
+                  "long": "Apply the basics of Javascript & HTML to create basic programs"
+                  }, {
+                  "name": "Programming 2",
+                  "startDate": "2017-08-30T17:30:00+0000",
+                  "endDate": "2017-09-23T19:30:00+0000",
+                  "leader": "Arevik Arevian",
+                  "requiredWorkshops": "Programming 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn fundamental concepts of OOP using using Javascript, HTML, CSS & Jquery",
+                  "long": "Combine Javascript, HTML, CSS & Jquery to create a simple browser game implementing OOP"
+                  }, {
+                  "name": "Programming 3",
+                  "startDate": "2017-08-30T17:30:00+0000",
+                  "endDate": "2017-09-23T19:30:00+0000",
+                  "leader": "Arevik Arevian",
+                  "requiredWorkshops": "Programming 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the fundamentals of Create.js, Node.js & SocketI.O",
+                  "long": "Combine Create.js, Node.js, SocketI.O with previous experience to create a 4 player multiplayer game on a local server"
+                  }, {
+                  "name": "Graphic Design 1",
+                  "startDate": "2017-10-4T15:30:00+0000",
+                  "endDate": "2017-10-28T17:30:00+0000",
+                  "leader": "Rostom Kouyoumdjian",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator",
+                  "long": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator & create an animated Gif image"
+                  }, {
+                  "name": "Graphic Design 2",
+                  "startDate": "2017-10-31T15:30:00+0000",
+                  "endDate": "2017-11-25T17:30:00+0000",
+                  "leader": "Rostom Kouyoumdjian",
+                  "requiredWorkshops": "Graphic Design 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the layout of / Create web pages using Adobe Photoshop",
+                  "long": "Learn and understand the design layout of webpages and create your own using Adobe Photoshop"
+                  }, {
+                  "name": "Graphic Design 3",
+                  "startDate": "2017-11-28T15:30:00+0000",
+                  "endDate": "2017-12-23T17:30:00+0000",
+                  "leader": "Rostom Kouyoumdjian",
+                  "requiredWorkshops": "Graphic Design 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the logo creation process conceptually and practically using Adobe Illustrator",
+                  "long": "Learn the concept and process of logo creation and present a logo of your creation using Adobe Illustrator"
+                  }, {
+                  "name": "3D Modelling 1",
+                  "startDate": "2018-1-10T15:30:00+0000",
+                  "endDate": "2018-2-3T17:30:00+0000",
+                  "leader": "Naira Arakelyan",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the Basics of the 3D modelling software 3DS MAX",
+                  "long": "Learn the Basics of the 3D modelling software 3DS MAX to create the model of an airplane"
+                  }, {
+                  "name": "3D Modelling 2",
+                  "startDate": "2018-2-13T15:30:00+0000",
+                  "endDate": "2018-3-3T17:30:00+0000",
+                  "leader": "Naira Arakelyan",
+                  "requiredWorkshops": "3D Modelling 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the Basics of the 3D character creation software ZBrush",
+                  "long": "Learn the Basics of the 3D character creation software ZBrush and create a 3D character on your own"
+                  }, {
+                  "name": "3D Modelling 3",
+                  "startDate": "2018-3-13T15:30:00+0000",
+                  "endDate": "2018-4-7T17:30:00+0000",
+                  "leader": "Naira Arakelyan",
+                  "requiredWorkshops": "3D Modelling 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Continue working with 3DS MAX and learn the basics of texturing using Autodesk Mudbox",
+                  "long": "Continue working with 3DS MAX, learn the basics of texturing using Autodesk Mudbox and add texture to the airplane model"
+                  }, {
+                  "name": "Web Design 1",
+                  "startDate": "2017-10-4T15:30:00+0000",
+                  "endDate": "2017-10-28T17:30:00+0000",
+                  "leader": "William Shakespeare",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the basics of web design with HTML & CSS",
+                  "long": "Learn the basics of web design with HTML & CSS and create a sample web page on your own"
+                  }, {
+                  "name": "Web Design 2",
+                  "startDate": "2017-10-31T15:30:00+0000",
+                  "endDate": "2017-11-25T17:30:00+0000",
+                  "leader": "William Shakespeare",
+                  "requiredWorkshops": "Web Design 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn how to work with CSS, PHP, AJAX & MySql",
+                  "long": "Learn and combine CSS, PHP, AJAX & MySql to create a dynamic webpage"
+                  }, {
+                  "name": "Web Design 3",
+                  "startDate": "2017-11-28T15:30:00+0000",
+                  "endDate": "2017-12-23T17:30:00+0000",
+                  "leader": "William Shakespeare",
+                  "requiredWorkshops": "Web Design 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn to use WordPress CMS",
+                  "long": "Combine previous knowledge of PHP and MySql with WordPress CMS to create a webpage"
+                  }, {
+                  "name": "Writing 1",
+                  "startDate": "2017-11-28T15:30:00+0000",
+                  "endDate": "2017-12-23T17:30:00+0000",
+                  "leader": "Charles Dickens",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the basic elements of storytelling",
+                  "long": "Learn about narrative, actions, events, evironments & conflict"
+                  }, {
+                  "name": "Writing 2",
+                  "startDate": "2018-1-10T15:30:00+0000",
+                  "endDate": "2018-2-3T17:30:00+0000",
+                  "leader": "Charles Dickens",
+                  "requiredWorkshops": "Writing 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn to create different types of character personalities and their expressions",
+                  "long": "Learn to create different types of character personalities and their expressions and gain experience with different literary genres"
+                  }]
+ }, {
+	"id": "123garen789",
+	"username": "garend",
+    "password": "lemon0",
+	"givenName": "Garen",
+	"middleName": "",
+	"familyName": "Donnagosyan",
+	"workshops": [{
+                  "name": "Swift & iOS Programming Workshop",
+                  "startDate": "2017-07-10T14:30:00+0000",
+                  "endDate": "2017-07-21T15:30:00+0000",
+                  "leader": "Garric Nahapetian",
+                  "requiredWorkshops": "Programming 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn to make iOS Apps using Swift & Xcode",
+                  "long": "Learn the basics of iOS Development using Swift & Xcode."
+                  }, {
+                  "name": "Programming 1",
+                  "startDate": "2017-08-3T17:30:00+0000",
+                  "endDate": "2017-08-26T19:30:00+0000",
+                  "leader": "Arevik Arevian",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Apply the basics of Javascript & HTML",
+                  "long": "Apply the basics of Javascript & HTML to create basic programs"
+                  }, {
+                  "name": "Programming 2",
+                  "startDate": "2017-08-30T17:30:00+0000",
+                  "endDate": "2017-09-23T19:30:00+0000",
+                  "leader": "Arevik Arevian",
+                  "requiredWorkshops": "Programming 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn fundamental concepts of OOP using using Javascript, HTML, CSS & Jquery",
+                  "long": "Combine Javascript, HTML, CSS & Jquery to create a simple browser game implementing OOP"
+                  }, {
+                  "name": "Programming 3",
+                  "startDate": "2017-08-30T17:30:00+0000",
+                  "endDate": "2017-09-23T19:30:00+0000",
+                  "leader": "Arevik Arevian",
+                  "requiredWorkshops": "Programming 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the fundamentals of Create.js, Node.js & SocketI.O",
+                  "long": "Combine Create.js, Node.js, SocketI.O with previous experience to create a 4 player multiplayer game on a local server"
+                  }, {
+                  "name": "Graphic Design 1",
+                  "startDate": "2017-10-4T15:30:00+0000",
+                  "endDate": "2017-10-28T17:30:00+0000",
+                  "leader": "Rostom Kouyoumdjian",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator",
+                  "long": "Learn the Basics of Graphic Design with Adobe Photoshop & Adobe Illustrator & create an animated Gif image"
+                  }, {
+                  "name": "Graphic Design 2",
+                  "startDate": "2017-10-31T15:30:00+0000",
+                  "endDate": "2017-11-25T17:30:00+0000",
+                  "leader": "Rostom Kouyoumdjian",
+                  "requiredWorkshops": "Graphic Design 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the layout of / Create web pages using Adobe Photoshop",
+                  "long": "Learn and understand the design layout of webpages and create your own using Adobe Photoshop"
+                  }, {
+                  "name": "Graphic Design 3",
+                  "startDate": "2017-11-28T15:30:00+0000",
+                  "endDate": "2017-12-23T17:30:00+0000",
+                  "leader": "Rostom Kouyoumdjian",
+                  "requiredWorkshops": "Graphic Design 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the logo creation process conceptually and practically using Adobe Illustrator",
+                  "long": "Learn the concept and process of logo creation and present a logo of your creation using Adobe Illustrator"
+                  }, {
+                  "name": "3D Modelling 1",
+                  "startDate": "2018-1-10T15:30:00+0000",
+                  "endDate": "2018-2-3T17:30:00+0000",
+                  "leader": "Naira Arakelyan",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the Basics of the 3D modelling software 3DS MAX",
+                  "long": "Learn the Basics of the 3D modelling software 3DS MAX to create the model of an airplane"
+                  }, {
+                  "name": "3D Modelling 2",
+                  "startDate": "2018-2-13T15:30:00+0000",
+                  "endDate": "2018-3-3T17:30:00+0000",
+                  "leader": "Naira Arakelyan",
+                  "requiredWorkshops": "3D Modelling 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the Basics of the 3D character creation software ZBrush",
+                  "long": "Learn the Basics of the 3D character creation software ZBrush and create a 3D character on your own"
+                  }, {
+                  "name": "3D Modelling 3",
+                  "startDate": "2018-3-13T15:30:00+0000",
+                  "endDate": "2018-4-7T17:30:00+0000",
+                  "leader": "Naira Arakelyan",
+                  "requiredWorkshops": "3D Modelling 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Continue working with 3DS MAX and learn the basics of texturing using Autodesk Mudbox",
+                  "long": "Continue working with 3DS MAX, learn the basics of texturing using Autodesk Mudbox and add texture to the airplane model"
+                  }, {
+                  "name": "Web Design 1",
+                  "startDate": "2017-10-4T15:30:00+0000",
+                  "endDate": "2017-10-28T17:30:00+0000",
+                  "leader": "William Shakespeare",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the basics of web design with HTML & CSS",
+                  "long": "Learn the basics of web design with HTML & CSS and create a sample web page on your own"
+                  }, {
+                  "name": "Web Design 2",
+                  "startDate": "2017-10-31T15:30:00+0000",
+                  "endDate": "2017-11-25T17:30:00+0000",
+                  "leader": "William Shakespeare",
+                  "requiredWorkshops": "Web Design 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn how to work with CSS, PHP, AJAX & MySql",
+                  "long": "Learn and combine CSS, PHP, AJAX & MySql to create a dynamic webpage"
+                  }, {
+                  "name": "Web Design 3",
+                  "startDate": "2017-11-28T15:30:00+0000",
+                  "endDate": "2017-12-23T17:30:00+0000",
+                  "leader": "William Shakespeare",
+                  "requiredWorkshops": "Web Design 2",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn to use WordPress CMS",
+                  "long": "Combine previous knowledge of PHP and MySql with WordPress CMS to create a webpage"
+                  }, {
+                  "name": "Writing 1",
+                  "startDate": "2017-11-28T15:30:00+0000",
+                  "endDate": "2017-12-23T17:30:00+0000",
+                  "leader": "Charles Dickens",
+                  "requiredWorkshops": "none",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn the basic elements of storytelling",
+                  "long": "Learn about narrative, actions, events, evironments & conflict"
+                  }, {
+                  "name": "Writing 2",
+                  "startDate": "2018-1-10T15:30:00+0000",
+                  "endDate": "2018-2-3T17:30:00+0000",
+                  "leader": "Charles Dickens",
+                  "requiredWorkshops": "Writing 1",
+                  "imageName": "swiftWorkshop",
+                  "short": "Learn to create different types of character personalities and their expressions",
+                  "long": "Learn to create different types of character personalities and their expressions and gain experience with different literary genres"
+                  }],
+ }, {
+    "id": "1235n54654654",
+	"username": "username",
+    "password": "password",
+	"givenName": "John",
+	"middleName": "",
+	"familyName": "Smith",
+	"workshops": [],
+ }
+]
