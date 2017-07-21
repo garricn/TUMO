@@ -142,12 +142,12 @@
                   "long": "Learn to create different types of character personalities and their expressions and gain experience with different literary genres"
                   }]
  }, {
-	"id": "123garen789",
-	"username": "garend",
-    "password": "lemon0",
-	"givenName": "Garen",
+	"id": "123username789",
+	"username": "username",
+    "password": "password",
+	"givenName": "John",
 	"middleName": "",
-	"familyName": "Donnagosyan",
+	"familyName": "Smith",
 	"workshops": [{
                   "name": "Swift & iOS Programming Workshop",
                   "startDate": "2017-07-10T14:30:00+0000",
@@ -286,7 +286,7 @@
                   }],
  }, {
     "id": "1235n54654654",
-	"username": "username",
+	"username": "noworkshops",
     "password": "password",
 	"givenName": "John",
 	"middleName": "",
