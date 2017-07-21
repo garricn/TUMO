@@ -90,8 +90,37 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     @objc private func didTapLoginButton(sender: UIButton) {
         login()
     }
-    
+
+    private func animateLoginButton() {
+        UIView.animate(withDuration: 0.5) {
+            self.authenticationView.actionButton.setTitle(nil, for: .normal)
+            self.authenticationView.actionButton.backgroundColor = .gray
+            self.authenticationView.buttonHeightConstraint?.isActive = true
+            self.authenticationView.buttonWidthConstraint?.constant = 50
+            self.actionButton.layer.cornerRadius = 25
+            self.authenticationView.spinner.startAnimating()
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    private func resetLoginButton() {
+        UIView.animate(withDuration: 0.5) {
+            let title = NSLocalizedString("login", comment: "").uppercased()
+            self.authenticationView.actionButton.setTitle(title, for: .normal)
+            self.authenticationView.actionButton.backgroundColor = .white
+            self.authenticationView.buttonHeightConstraint?.isActive = false
+            self.authenticationView.buttonWidthConstraint?.constant = 200
+            self.actionButton.layer.cornerRadius = 5
+            self.authenticationView.spinner.stopAnimating()
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+        }
+    }
+
     private func login() {
+        animateLoginButton()
+
         guard let usernameText = usernameTextField.text,
             let passwordText = passwordTextField.text,
             let username = Username(rawValue: usernameText),
@@ -121,7 +150,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                         break
                     case .invalidUsernameAndPassword:
                         self.errUsername = true
-                        break
+                        self.resetLoginButton()
                     case .unknown:
                         fatalError("Network crashed")
                         break

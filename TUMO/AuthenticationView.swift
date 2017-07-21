@@ -9,8 +9,6 @@
 import UIKit
 
 class AuthenticationView: UIView {
-
-//    let infoLabel = UILabel()
     
     let logoimage = UIImage(named: "logo")
     let logoimageview = UIImageView()
@@ -20,28 +18,27 @@ class AuthenticationView: UIView {
 
     var centerYConstraint: NSLayoutConstraint?
 
-    
+    var buttonWidthConstraint: NSLayoutConstraint?
+    var buttonHeightConstraint: NSLayoutConstraint?
+
+    let spinner = UIActivityIndicatorView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
         backgroundColor = .white
         
         logoimageview.image = logoimage
-        
-//        addSubview(infoLabel)
+
         addSubview(logoimageview)
         addSubview(usernameTextField)
         addSubview(passwordTextField)
         addSubview(actionButton)
 
-        //infoLabel.translatesAutoresizingMaskIntoConstraints = false
         logoimageview.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         actionButton.translatesAutoresizingMaskIntoConstraints = false
-
-        //infoLabel.text = "TUMO"
-        //infoLabel.textAlignment = .center
 
         usernameTextField.placeholder = NSLocalizedString("username", comment: "").capitalized
         usernameTextField.borderStyle = .roundedRect
@@ -55,28 +52,26 @@ class AuthenticationView: UIView {
         passwordTextField.isSecureTextEntry = true
         
         actionButton.setTitle(NSLocalizedString("login", comment: "").uppercased(), for: .normal)
-        actionButton.setTitleColor(.blue, for: .normal)
+        actionButton.setTitleColor(.gray, for: .normal)
         actionButton.setTitleColor(.gray, for: .highlighted)
         actionButton.backgroundColor = .white
-        actionButton.layer.borderColor = UIColor.blue.cgColor
+        actionButton.layer.borderColor = UIColor.gray.cgColor
         actionButton.layer.borderWidth = 2.0
         actionButton.layer.cornerRadius = 5.0
 
-        // MARK: - Constraining X Axis
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        actionButton.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: actionButton.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: actionButton.centerYAnchor).isActive = true
 
-        //infoLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        //infoLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        
         usernameTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
         usernameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
 
         passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 50).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -50).isActive = true
 
-        actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 70).isActive = true
-        actionButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -70).isActive = true
-
-        // MARK: - Constraining Y Axis
+        buttonWidthConstraint = actionButton.widthAnchor.constraint(equalToConstant: 200)
+        buttonWidthConstraint?.isActive = true
 
         logoimageview.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10).isActive = true
         logoimageview.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -84,11 +79,27 @@ class AuthenticationView: UIView {
         centerYConstraint = passwordTextField.centerYAnchor.constraint(equalTo: centerYAnchor)
         centerYConstraint?.isActive = true
 
-        //infoLabel.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -10).isActive = true
         usernameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -10).isActive = true
+
         actionButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
+        actionButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+
+        buttonHeightConstraint = actionButton.heightAnchor.constraint(equalToConstant: 50)
+
     }
-    
+
+    func animateLoginButton() {
+        UIView.animate(withDuration: 0.5) {
+            self.actionButton.setTitle(nil, for: .normal)
+            self.actionButton.backgroundColor = .gray
+            self.buttonHeightConstraint?.isActive = true
+            self.buttonWidthConstraint?.constant = 50
+            self.actionButton.layer.cornerRadius = 25
+            self.spinner.startAnimating()
+            self.superview?.setNeedsLayout()
+        }
+    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
