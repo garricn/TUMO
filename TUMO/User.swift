@@ -130,7 +130,6 @@ class User: NSObject, NSCoding {
                         completion(user, nil)
                         return
                     } else if(user.username == credential.username.rawValue){
-                        
                         completion(nil, .invalidPassword)
                         return
                     }
