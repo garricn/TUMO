@@ -80,11 +80,12 @@ final class WorkshopDetailViewController: UITableViewController {
         let item: String
         
         static func sections(from workshop: Workshop) -> [Section] {
+            let dateString = DateFormatter.string(from: workshop.realStartDate, with: .MMMMddyyyy)
             return[
                 Section(title: NSLocalizedString("Image", comment: ""), item: "Image"),
                 Section(title: NSLocalizedString("Name", comment: ""), item: workshop.name),
                 Section(title: NSLocalizedString("Leader", comment: ""), item: workshop.leader),
-                Section(title: NSLocalizedString("Data", comment: ""), item: workshop.startDate + workshop.endDate),
+                Section(title: NSLocalizedString("Date", comment: ""), item: dateString),
                 Section(title: NSLocalizedString("Description", comment: ""), item: workshop.longDescription)
             ]
         }

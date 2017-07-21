@@ -142,9 +142,11 @@ class MyScheduleViewController: UITableViewController {
         var sections: [Section] {
             switch self {
             case .empty:
-                return [Section(title: nil, items: [Item(text: "No Workshops Found")])]
+                let text = NSLocalizedString("No Workshops Found", comment: "")
+                return [Section(title: nil, items: [Item(text: text)])]
             case .loading:
-                return [Section(title: nil, items: [Item(text: "Loading...")])]
+                let text = NSLocalizedString("Loading...", comment: "")
+                return [Section(title: nil, items: [Item(text: text)])]
             case .notEmpty(let workshops):
                 return Section.sections(from: workshops)
             }

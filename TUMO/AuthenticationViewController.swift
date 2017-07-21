@@ -146,7 +146,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                             self.passwordTextField.layer.borderWidth = 2.0
                             self.passwordTextField.placeholder = "Invalid Password"
                             self.errPassword = true
-
+                            self.resetLoginButton()
                         }
                         break
                     case .invalidUsernameAndPassword:
