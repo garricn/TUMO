@@ -27,7 +27,7 @@ final class WorkshopDetailViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Workshop Details"
+        title = NSLocalizedString("Workshop Details", comment: "")
         tableView.estimatedRowHeight = 50
         tableView.register(MyTableViewCell.self, forCellReuseIdentifier: "imageCell")
     }
@@ -81,11 +81,11 @@ final class WorkshopDetailViewController: UITableViewController {
         
         static func sections(from workshop: Workshop) -> [Section] {
             return[
-                Section(title: "Image", item: "Image"),
-                Section(title: "Name", item: workshop.name),
-                Section(title: "Leader", item: workshop.leader),
-                Section(title: "Date", item: workshop.startDate + workshop.endDate),
-                Section(title: "Description", item: workshop.longDescription)
+                Section(title: NSLocalizedString("Image", comment: ""), item: "Image"),
+                Section(title: NSLocalizedString("Name", comment: ""), item: workshop.name),
+                Section(title: NSLocalizedString("Leader", comment: ""), item: workshop.leader),
+                Section(title: NSLocalizedString("Data", comment: ""), item: workshop.startDate + workshop.endDate),
+                Section(title: NSLocalizedString("Description", comment: ""), item: workshop.longDescription)
             ]
         }
     }

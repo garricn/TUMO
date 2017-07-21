@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B5D6EA21F1F929400606CEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2B5D6EA01F1F929400606CEC /* Localizable.strings */; };
+		2BCF3D8A1F20E812003A7DA2 /* mockUsers-hy.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BCF3D881F20E812003A7DA2 /* mockUsers-hy.json */; };
+		2BCF3D8B1F20E812003A7DA2 /* mockUsers-en.json in Resources */ = {isa = PBXBuildFile; fileRef = 2BCF3D891F20E812003A7DA2 /* mockUsers-en.json */; };
 		6006D7871F1A02530074674D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006D7861F1A02530074674D /* NavigationController.swift */; };
 		6006D7891F1A11A60074674D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6006D7881F1A11A60074674D /* User.swift */; };
 		602BBAAA1F18DA9E00030791 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602BBAA91F18DA9E00030791 /* AuthenticationView.swift */; };
@@ -18,13 +21,18 @@
 		606748FE1F20BF1B00DC41B3 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606748FC1F20BF1B00DC41B3 /* DateFormat.swift */; };
 		606748FF1F20BF1B00DC41B3 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */; };
 		60C58F241F1B870D0072E156 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C58F231F1B870D0072E156 /* Credential.swift */; };
-		60C58F261F1B8C4D0072E156 /* mockUsers.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C58F251F1B8C4D0072E156 /* mockUsers.json */; };
 		60C8B26A1F17A48D00F8015B /* Workshop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8B2691F17A48D00F8015B /* Workshop.swift */; };
 		84C466AD1F20D1FC0053845E /* MyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C466AC1F20D1FC0053845E /* MyTableViewCell.swift */; };
 		84F081251F1E1EF10072A197 /* WorkshopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F081241F1E1EF10072A197 /* WorkshopDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B5D6EA11F1F929400606CEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = TUMO/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2B5D6EA31F1F92CB00606CEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = TUMO/en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2B5D6EA41F1F92DE00606CEC /* hy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hy; path = hy.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		2B5D6EA51F1F92DE00606CEC /* hy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hy; path = TUMO/hy.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2BCF3D881F20E812003A7DA2 /* mockUsers-hy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mockUsers-hy.json"; sourceTree = "<group>"; };
+		2BCF3D891F20E812003A7DA2 /* mockUsers-en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mockUsers-en.json"; sourceTree = "<group>"; };
 		6006D7861F1A02530074674D /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6006D7881F1A11A60074674D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		602BBAA91F18DA9E00030791 /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
@@ -38,7 +46,6 @@
 		606748FC1F20BF1B00DC41B3 /* DateFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		60C58F231F1B870D0072E156 /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
-		60C58F251F1B8C4D0072E156 /* mockUsers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mockUsers.json; path = ../mockUsers.json; sourceTree = "<group>"; };
 		60C8B2691F17A48D00F8015B /* Workshop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workshop.swift; sourceTree = "<group>"; };
 		84C466AC1F20D1FC0053845E /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		84F081241F1E1EF10072A197 /* WorkshopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WorkshopDetailViewController.swift; path = ../WorkshopDetailViewController.swift; sourceTree = "<group>"; };
@@ -74,9 +81,10 @@
 		60521B5F1F14F095002315B7 /* TUMO */ = {
 			isa = PBXGroup;
 			children = (
+				2BCF3D891F20E812003A7DA2 /* mockUsers-en.json */,
+				2BCF3D881F20E812003A7DA2 /* mockUsers-hy.json */,
 				606748FC1F20BF1B00DC41B3 /* DateFormat.swift */,
 				606748FD1F20BF1B00DC41B3 /* DateFormatterExtensions.swift */,
-				60C58F251F1B8C4D0072E156 /* mockUsers.json */,
 				60521B601F14F095002315B7 /* AppDelegate.swift */,
 				602BBAA91F18DA9E00030791 /* AuthenticationView.swift */,
 				602BBAAB1F18E13000030791 /* AuthenticationViewController.swift */,
@@ -87,6 +95,7 @@
 				6006D7881F1A11A60074674D /* User.swift */,
 				60C8B2691F17A48D00F8015B /* Workshop.swift */,
 				60C58F231F1B870D0072E156 /* Credential.swift */,
+				2B5D6EA01F1F929400606CEC /* Localizable.strings */,
 				60521B671F14F095002315B7 /* Assets.xcassets */,
 				60521B691F14F095002315B7 /* LaunchScreen.storyboard */,
 				60521B6C1F14F095002315B7 /* Info.plist */,
@@ -126,7 +135,6 @@
 				TargetAttributes = {
 					60521B5C1F14F095002315B7 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = Y642MFHN82;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -138,6 +146,7 @@
 			knownRegions = (
 				en,
 				Base,
+				hy,
 			);
 			mainGroup = 60521B541F14F095002315B7;
 			productRefGroup = 60521B5E1F14F095002315B7 /* Products */;
@@ -154,9 +163,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BCF3D8A1F20E812003A7DA2 /* mockUsers-hy.json in Resources */,
+				2B5D6EA21F1F929400606CEC /* Localizable.strings in Resources */,
 				60521B6B1F14F095002315B7 /* LaunchScreen.storyboard in Resources */,
-				60C58F261F1B8C4D0072E156 /* mockUsers.json in Resources */,
 				60521B681F14F095002315B7 /* Assets.xcassets in Resources */,
+				2BCF3D8B1F20E812003A7DA2 /* mockUsers-en.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,10 +196,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		2B5D6EA01F1F929400606CEC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B5D6EA11F1F929400606CEC /* Base */,
+				2B5D6EA31F1F92CB00606CEC /* en */,
+				2B5D6EA51F1F92DE00606CEC /* hy */,
+			);
+			name = Localizable.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		60521B691F14F095002315B7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				60521B6A1F14F095002315B7 /* Base */,
+				2B5D6EA41F1F92DE00606CEC /* hy */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -200,6 +223,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -251,6 +275,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -295,7 +320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Y642MFHN82;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TUMO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TUMO.TUMO;
@@ -308,7 +333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Y642MFHN82;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = TUMO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TUMO.TUMO;
