@@ -16,6 +16,9 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
 
     weak var delegate: AuthenticationDelegate?
 
+    var errUsername = false
+    var errPassword = false
+    
     let authenticationView = AuthenticationView()
     let center = NotificationCenter.default
 
@@ -87,11 +90,37 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         
         let credential = Credential(username: username, password: password)
 
-        User.authenticate(with: credential) { [unowned self] user in
+        User.authenticate(with: credential) { [unowned self] user, error in
             guard let user = user else {
-                print("Could not authenticate user!")
+                if let error = error {
+                    switch error {
+                    case .invalidPassword:
+                        DispatchQueue.main.async {
+                            self.passwordTextField.shake()
+                            self.passwordTextField.layer.cornerRadius = 5.0
+                            self.passwordTextField.layer.masksToBounds = true
+                            self.passwordTextField.layer.borderColor = UIColor( red: 255/255, green: 0/255, blue:0/255, alpha:1.0 ).cgColor
+
+                            self.passwordTextField.text = ""
+                            self.passwordTextField.layer.borderWidth = 2.0
+                            self.passwordTextField.placeholder = "Invalid Password"
+                            self.errPassword = true
+
+                        }
+                        break
+                    case .invalidUsernameAndPassword:
+                        self.errUsername = true
+                        break
+                    case .unknown:
+                        fatalError("Network crashed")
+                        break
+                    }
+                } else {
+                    print("Unknown error")
+                }
                 return
             }
+            
             DispatchQueue.main.async {
                 self.delegate?.didFinishAuthenticating(user: user, in: self)
             }
@@ -115,7 +144,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == usernameTextField {
             let username = Username(rawValue: textField.text!)
-            if username == nil {
+            if username == nil{
                 textField.shake()
                 textField.layer.cornerRadius = 5.0
                 textField.layer.masksToBounds = true
@@ -129,9 +158,10 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
+        
         if textField == passwordTextField {
             let password = Password(rawValue: textField.text!)
-            if password == nil {
+            if password == nil || errPassword{
                 textField.shake()
                 textField.layer.cornerRadius = 5.0
                 textField.layer.masksToBounds = true
@@ -140,6 +170,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
                 textField.text = ""
                 textField.placeholder = "Invalid Password"
             } else {
+                errPassword = false
                 textField.layer.borderWidth = 0.25
                 textField.layer.borderColor = UIColor.lightGray.cgColor
             }
